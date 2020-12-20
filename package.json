@@ -1,0 +1,26 @@
+{
+  "name": "rehab",
+  "version": "1.0.0",
+  "description": "miniprogram based on vant weapp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ChengYexuan/vant-project.git"
+  },
+  "keywords": [
+    "vant",
+    "miniprogram"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChengYexuan/vant-project/issues"
+  },
+  "homepage": "https://github.com/ChengYexuan/vant-project#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.6.4"
+  }
+}

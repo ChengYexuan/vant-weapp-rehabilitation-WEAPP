@@ -1,0 +1,45 @@
+/* pages/train/train.wxss */
+.box{
+  height: 100%;
+  width: 100%;
+  align-items: flex-end;
+  margin-top: 4rpx;
+  margin-bottom: 4rpx;
+  background-color: white;
+}
+
+.inner{
+  height: 100%;
+  width: 100%;
+  margin: 1rpx;
+}
+
+/* padding 对view元素有用，对van-col元素无效 */
+.h1{
+  font-size: larger;
+  font-weight: 700;
+  padding: 15rpx;
+}
+
+.h2{
+  font-size: medium;
+  font-weight: 600;
+  padding-bottom: 10rpx;
+}
+
+/* 调整画布可见范围比例，和画布大小无关 */
+.canvas{
+  width: 100%;
+}
+
+.graph{
+  width: 60%;
+  height: 320rpx;
+}
+
+.list{
+  width: 30%;
+  position: fixed;
+  top: 200rpx;
+  right: 30rpx;
+}

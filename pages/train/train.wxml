@@ -1,0 +1,54 @@
+<!--pages/train/train.wxml-->
+<view class="box">
+  <view class="h1">颈部慢性疼痛缓解训练计划</view>
+  <view class="inner">
+    <van-row>
+      <van-col span="13" offset="3"><view class="h2">今日完成情况</view></van-col>
+      <van-col span="8"><view class="h2">历史完成情况</view></van-col>
+      <view class="graph">
+        <canvas canvas-id="ringCanvas" class="canvas van-hairline--right" bindtouchstart="touchHandler"></canvas>
+      </view>
+      <view class="list">
+        <view style="font-size: large">
+          7天
+          <van-tag type="success">已完成</van-tag>
+        </view>
+        <view>
+          3天
+          <van-tag type="warning">连续完成</van-tag>
+        </view>
+      </view>
+      <!-- <button type="primary" bindtap="updateData" style="margin-top:30rpx">更新title</button> -->
+    </van-row>
+  </view>
+</view>
+<view class="box">
+  <van-row>
+    <van-col offset="1"><view class="h2">主要任务</view></van-col>
+  </van-row>
+  <van-row>
+    <van-col>
+      <view style="padding-left: 1pc; padding-right: 1pc">缓解长期错误姿势造成的颈部压力，舒缓肌肉，减少疼痛。准备器材：瑜伽垫、椅子、桌子</view>
+    </van-col>
+  </van-row>
+  <van-steps steps="{{steps}}" active="{{active}}" />
+</view>
+<view class="box">
+  <van-panel title="计划一" desc="麦肯基坐式头部回缩运动" status="已完成" use-footer-slot>
+    <view slot="footer">
+      <van-icon name="star" color="green" size="25px"></van-icon>
+      时长 次数 休息
+    </view>
+    <view slot="footer">
+      <van-button size="small"type="primary">开始训练</van-button>
+    </view>
+  </van-panel>
+  <van-panel title="计划二" desc="麦肯基坐式头部回缩运动进阶" status="未完成" use-footer-slot>
+    <view slot="footer">
+      <van-icon name="star" color="green" size="25px"></van-icon>
+    </view>
+    <view slot="footer">
+      <van-button size="small" type="primary">开始训练</van-button>
+    </view>
+  </van-panel>
+</view>

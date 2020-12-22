@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/train/train"
+    "pages/train/train",
+    "pages/me/me",
+    "pages/new/new"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,6 +18,32 @@
     "van-panel": "@vant/weapp/panel/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/train/train",
+        "text": "myplan"
+      },
+      {
+        "pagePath": "pages/new/new",
+        "text": "new"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "me"
+      }
+    ]
   }
 }

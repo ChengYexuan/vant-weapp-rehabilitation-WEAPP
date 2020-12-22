@@ -39,7 +39,7 @@
 
 .list{
   width: 30%;
-  position: fixed;
+  position: absolute;
   top: 200rpx;
   right: 30rpx;
 }

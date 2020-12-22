@@ -4,15 +4,26 @@ const app = getApp()
 
 Page({
   data: {
+    // 内置相关数据
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // 激活颜色的tabbar-item
+    active: 'home'
   },
-  //事件处理函数
+  // 事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  // 选中tabbar-item激活颜色并且跳转路由
+  onChange(e){
+    this.setData({active:e.detail})
+    wx.showToast({
+      title: `${e.detail}`,
+      icon: 'none'
     })
   },
   onLoad: function () {

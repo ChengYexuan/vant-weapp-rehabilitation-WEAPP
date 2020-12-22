@@ -8,24 +8,16 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    // 激活颜色的tabbar-item
-    active: 'home'
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
   // 事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  // 选中tabbar-item激活颜色并且跳转路由
-  onChange(e){
-    this.setData({active:e.detail})
-    wx.showToast({
-      title: `${e.detail}`,
-      icon: 'none'
-    })
-  },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -54,6 +46,21 @@ Page({
       })
     }
   },
+
+    /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
+    // 不然会发生tabbar中selected与实际上的index不同
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
+  
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

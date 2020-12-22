@@ -50,7 +50,6 @@ Component({
       const url = data.path
       // 必须是配置在app.json的tabbar项中才可以使用switchTab方法
       wx.switchTab({url})
-      console.log(data.index)
       this.setData({
         selected: data.index
       })

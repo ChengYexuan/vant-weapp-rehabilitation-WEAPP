@@ -2,10 +2,6 @@
 var wxCharts = require('../../utils/wxcharts.js')
 var ringChart = null
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     steps: [
       {
@@ -94,7 +90,14 @@ setTimeout(() => {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
+    // 不然会发生tabbar中selected与实际上的index不同
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
   },
 
   /**

@@ -1,4 +1,4 @@
-// pages/new/new.js
+// pages/history/history.js
 Page({
 
   /**
@@ -22,16 +22,13 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
     // 不然会发生tabbar中selected与实际上的index不同
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 1
+        selected: 3
       })
     }
   },
@@ -71,4 +68,3 @@ Page({
 
   }
 })
-

@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/train/train",
     "pages/me/me",
-    "pages/new/new"
+    "pages/new/new",
+    "pages/history/history"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,12 +34,16 @@
         "text": "home"
       },
       {
+        "pagePath": "pages/new/new",
+        "text": "new"
+      },
+      {
         "pagePath": "pages/train/train",
         "text": "myplan"
       },
       {
-        "pagePath": "pages/new/new",
-        "text": "new"
+        "pagePath": "pages/history/history",
+        "text": "history"
       },
       {
         "pagePath": "pages/me/me",

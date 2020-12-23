@@ -21,18 +21,19 @@ Component({
         pagePath: "/pages/index/index",
         text: "首页",
         icon: "home-o"
-      },
-      {
-        pagePath: "/pages/train/train",
-        text: "我的方案",
-        icon: "points"
-      },
-      {
+      }, {
         pagePath: "/pages/new/new",
         text: "新建方案",
         icon: "add-o"
-      },
-      {
+      }, {
+        pagePath: "/pages/train/train",
+        text: "我的方案",
+        icon: "points"
+      }, {
+        pagePath: "/pages/history/history",
+        text: "历史方案",
+        icon: "tosend"
+      }, {
         pagePath: "/pages/me/me",
         text: "我的",
         icon: "user-o"

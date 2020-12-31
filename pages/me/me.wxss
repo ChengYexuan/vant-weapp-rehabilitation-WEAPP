@@ -1,1 +1,50 @@
 /* pages/me/me.wxss */
+.box{
+  height: 100%;
+  width: 100%;
+  align-items: flex-end;
+  background-color: white;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  font-size: medium;
+  color: black;
+  padding: 15rpx;
+}
+
+.white{
+  border: 3rpx solid white;
+  border-radius: 20rpx;
+  font-size: larger;
+  padding: 40rpx;
+}
+
+.h1{
+  font-size: larger;
+  font-weight: 700;
+  padding: 15rpx;
+}
+
+.h2{
+  font-size: medium;
+  font-weight: 600;
+  border: 3rpx solid black;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}

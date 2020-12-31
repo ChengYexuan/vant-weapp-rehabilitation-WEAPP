@@ -1,3 +1,4 @@
+/* pages/history/historydetails.wxss */
 /* pages/history/history.wxss */
 .boxblue{
   height: 100%;
@@ -31,13 +32,31 @@
 
 .h1{
   font-size: larger;
-  font-weight: 700;
-  padding: 15rpx;
+  font-weight: 800;
+  padding: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .h2{
   font-size: medium;
   font-weight: 600;
+  padding-bottom: 10rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.h3{
+  font-size: larger;
+  font-weight: 800;
+  padding: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.h4{
+  font-size: medium;
+  font-weight: 400;
   padding-bottom: 10rpx;
   margin-top: 20rpx;
   margin-bottom: 10rpx;

@@ -5,7 +5,8 @@
     "pages/train/train",
     "pages/me/me",
     "pages/new/new",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/history/historydetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

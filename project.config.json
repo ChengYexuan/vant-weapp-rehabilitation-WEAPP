@@ -12,7 +12,7 @@
     "minified": true,
     "newFeature": false,
     "coverView": true,
-    "nodeModules": false,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
@@ -67,6 +67,12 @@
         {
           "name": "pages/train/train",
           "pathName": "pages/train/train",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/new/new",
+          "pathName": "pages/new/new",
           "query": "",
           "scene": null
         }

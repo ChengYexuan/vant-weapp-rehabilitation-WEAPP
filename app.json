@@ -5,12 +5,14 @@
     "pages/train/train",
     "pages/me/me",
     "pages/new/new",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/train/start",
+    "pages/train/video"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "颈部康复训练",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

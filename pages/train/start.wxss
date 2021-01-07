@@ -1,0 +1,40 @@
+/* pages/train/start.wxss */
+@import "./train.wxss";
+
+image{
+  display: block;
+  width: 750rpx;
+  height: 380rpx;
+}
+
+.mask {
+	background: rgba(0, 0, 0, 0.5);
+  width: 750rpx;
+  height: 380rpx;
+  position: absolute;
+  top: 0;
+}
+
+.hover{
+  position: absolute;
+  left: 0;
+  top: 50rpx;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  text-align: center;
+  height: 100rpx;
+}
+
+.spread{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: smaller;
+}
+
+.sp{
+  font-size: x-large;
+  color: #6ED2FF;
+}

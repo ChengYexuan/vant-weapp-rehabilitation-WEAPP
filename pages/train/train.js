@@ -1,82 +1,110 @@
 // pages/train/train.js
-var wxCharts = require('../../utils/wxcharts.js')
+import wxCharts from '../../utils/wxcharts.js';
 var ringChart = null
+var radarChart = null;
+// var lineChart = null
+
 Page({
   data: {
-    steps: [
-      {
-        text: '训练前准备',
-      },
-      {
-        text: '计划一',
-      },
-      {
-        text: '计划二',
-      },
-      {
-        text: '计划三',
-      },
-    ],
+    finish: 0,
+    unfinish: 0,
+    steps: [],
+    imageURL: '../../icon/train_start.jpg',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var windowWidth = 320;
 
+    // 获取窗口宽度
+    var windowWidth = 0;
     try {
       var res = wx.getSystemInfoSync();
       windowWidth = res.windowWidth;
     } catch (e) {
       console.error('getSystemInfoSync failed!');
     }
-
+    
+    // 后端获取
+    var finish = 50;
+    var unfinish = 30;
+    var array = [{text: '准备'}, {text: '动作一'}, {text: '动作二'}, {text: '动作三'}, {text: '动作四'}, {text: '动作五'}];
+    this.setData({
+      finish: finish,
+      unfinish: unfinish,
+      steps: array,
+    })
+    var percent = finish/(finish+unfinish)*100;
+     
+    // 圆环图
     ringChart = new wxCharts({
       animation: true,
       canvasId: 'ringCanvas',
       type: 'ring',
       extra: {
-        ringWidth: 15,
+        ringWidth: 8,
         pie: {
           offsetAngle: -45
         }
       },
       title: {
-        name: '70%',
-        color: '#53BC53',
+        name: percent + '%',
+        color: '#000000',
         fontSize: 25
       },
       subtitle: {
-        name: '完成度',
-        color: '#53BC53',
-        fontSize: 15
+        name: '今日已完成',
+        color: '#000000',
+        fontSize: 13
       },
       series: [{
-          name: '成交量1',
-          data: 15,
-          stroke: false
+        name: 'unfinished',
+        data: unfinish,
+        stroke: false,
+        color: '#E2460E'
       },  {
-          name: '成交量4',
-          data: 63,
-          stroke: false
+        name: 'finished',
+        data: finish,
+        stroke: false,
+        color: '#99CD2C'
       }],
       disablePieStroke: true,
-      width: windowWidth*0.5,
+      width: windowWidth*0.4,
       // 调节画布高度，但超过200后会超出可视范围
-      height: 175,
+      height: 150,
       dataLabel: false,
       // 图例只能放在底部，其他位置需要关闭图例，进行自定义
       legend: false,
       background: '#f5f5f5',
       padding: 0
-  });
-  ringChart.addEventListener('renderComplete', () => {
-    console.log('renderComplete');
-});
-setTimeout(() => {
-    ringChart.stopAnimation();
-}, 500);
+    });
+    ringChart.addEventListener('renderComplete', () => {
+      console.log('renderComplete');
+    });
+    setTimeout(() => {
+      ringChart.stopAnimation();
+    }, 500);
+
+    // 雷达图
+    radarChart = new wxCharts({
+      canvasId: 'radarCanvas',
+      type: 'radar',
+      categories: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+      series: [{
+        name: '成交量1',
+        data: [90, 110, 125, 95, 87, 122, 0],
+        color: '#6ED2FF'
+      }],
+      width: windowWidth*1.1,
+      height: 150,
+      legend: false,
+      extra: {
+        radar: {
+          max: 150
+        }
+      }
+    });
   },
 
   /**
@@ -120,6 +148,13 @@ setTimeout(() => {
   onPullDownRefresh: function () {
 
   },
+  onClick: function () {
+
+  },
+
+  touchHandler: function (e) {
+    console.log(radarChart.getCurrentDataIndex(e));
+},
 
   /**
    * 页面上拉触底事件的处理函数

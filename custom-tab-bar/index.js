@@ -13,9 +13,9 @@ Component({
   data: {
     // 被选中的tab的index
     selected: 0,
-    color: "#999999",
+    // color: "#999999",
     // 选中时的字体颜色
-    selectedColor: "#7ED5E5",
+    // selectedColor: "#7ED5E5",
     list: [
       {
         pagePath: "/pages/index/index",

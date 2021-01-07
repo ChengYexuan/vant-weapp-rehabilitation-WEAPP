@@ -3,8 +3,8 @@
   height: 100%;
   width: 100%;
   align-items: flex-end;
-  margin-top: 4rpx;
-  margin-bottom: 4rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
   background-color: white;
 }
 
@@ -18,28 +18,43 @@
 .h1{
   font-size: larger;
   font-weight: 700;
-  padding: 15rpx;
+  display: flex;
+  justify-content:center;
 }
 
 .h2{
   font-size: medium;
   font-weight: 600;
-  padding-bottom: 10rpx;
+  padding: 20rpx;
 }
 
-/* 调整画布可见范围比例，和画布大小无关 */
-.canvas{
-  width: 100%;
+.text{
+  padding-left: 1pc;
+  padding-right: 1pc;
+  font-size: small;
+  font-weight: 400;
 }
 
-.graph{
-  width: 60%;
-  height: 320rpx;
-}
-
-.list{
+.legend{
+  display: block;
   width: 30%;
   position: absolute;
-  top: 200rpx;
-  right: 30rpx;
+  top: 160rpx;
+  right: 240rpx;
+}
+
+.radar{
+  position: absolute;
+  top: 120rpx;
+  right: 0;
+}
+
+.btn{
+  display: flex;
+  flex-direction:column;
+  height: 210rpx;
+  align-items: flex-start;
+  position: absolute;
+  top: -145rpx;
+  left: 110rpx;
 }

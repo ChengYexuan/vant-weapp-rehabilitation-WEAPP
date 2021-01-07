@@ -1,6 +1,6 @@
 <!--custom-tab-bar/index.wxml-->
-<van-tabbar active="{{active}}">
-  <van-tabbar-item wx:for="{{list}}" wx:key="index" name="{{item.home}}" icon="{{item.icon}}" bindtap="switchTab" data-index="{{index}}" data-path="{{item.pagePath}}">
-    <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
+<van-tabbar active="{{selected}}">
+  <van-tabbar-item wx:for="{{list}}" wx:key="index" name="{{item.home}}" icon="{{item.icon}}" bindtap="switchTab" data-index="{{index}}" data-path="{{item.pagePath}}">{{item.text}}
+    <!-- <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view> -->
   </van-tabbar-item>
 </van-tabbar>

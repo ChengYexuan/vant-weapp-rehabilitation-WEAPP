@@ -69,6 +69,12 @@
           "pathName": "pages/train/train",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/train/start",
+          "pathName": "pages/train/start",
+          "query": "",
+          "scene": null
         }
       ]
     }

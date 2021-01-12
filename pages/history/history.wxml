@@ -7,7 +7,7 @@
     contentPosition="center"
     dashed="false"
     hairline="false"
-    customStyle="color: white; border-color: #1989fa; font-size: 18px;"
+    customStyle="color: white; border-color: #9DE2F3; font-size: 18px;"
   >
     <text class="h0">训练计划</text>
   </van-divider>

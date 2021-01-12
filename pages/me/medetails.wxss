@@ -1,0 +1,34 @@
+/* pages/me/medetails.wxss */
+.box{
+  height: 100%;
+  width: 100%;
+  align-items: flex-end;
+  background-color: white;
+}
+
+.h0{
+  border: 3rpx solid white;
+  border-radius: 20rpx;
+  font-size: larger;
+  padding: 40rpx;
+}
+
+.h1{
+  font-size: larger;
+  font-weight: 700;
+  padding: 15rpx;
+}
+
+.h2{
+  font-size: medium;
+  font-weight: 600;
+  border: 3rpx solid black;
+}
+
+.h3{
+  border-radius: 20rpx;
+  font-size: medium;
+  font-weight: 500;
+  border: 3rpx solid #9DE2F3;
+  padding: 40rpx;
+}

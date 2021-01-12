@@ -15,6 +15,12 @@
 </view>
 
 <view class="box">
+  <van-cell
+    is-link
+    value="修改资料"
+    link-type="navigateTo"
+    url="/pages/me/medetails"
+  />
   <van-cell-group>
     <van-cell center title="年龄" value="暂无" />
     <van-cell center title="性别" value="暂无" />
@@ -51,6 +57,10 @@
 </view>
 
 <view class="box">
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
   <text>\n</text>
   <text>\n</text>
 </view>

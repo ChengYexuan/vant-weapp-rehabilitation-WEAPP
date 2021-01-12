@@ -4,7 +4,7 @@
   width: 100%;
   align-items: flex-end;
   justify-content: center;
-  background-color: #1989fa;
+  background-color: #9DE2F3;
 }
 
 .box{

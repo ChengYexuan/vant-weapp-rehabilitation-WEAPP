@@ -1,21 +1,43 @@
 // pages/train/train.js
-import wxCharts from '../../utils/wxcharts.js';
+
+import wxCharts from '../../utils/wxcharts.js'
 var ringChart = null
-var radarChart = null;
-// var lineChart = null
+var radarChart = null
+const docu = require('../../static/docu.js')
+const document = docu.plan
 
 Page({
   data: {
-    finish: 0,
-    unfinish: 0,
-    steps: [],
+    planName: '',
+    finished: 0, //已完成的训练时长
+    unfinished: 0, //未完成的训练时长
+    mission: '',
+    step: [], //训练计划步骤
+    active: 0, //当前步骤
+    list: [], //方案中的动作
     imageURL: '../../icon/train_start.jpg',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  },
+
+  onShow: function () {
+
+    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
+    // 不然会发生 tabbar 中 selected 与实际上的 index 不同的情况
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2
+      })
+    }
 
     // 获取窗口宽度
     var windowWidth = 0;
@@ -25,18 +47,58 @@ Page({
     } catch (e) {
       console.error('getSystemInfoSync failed!');
     }
-    
-    // 后端获取
-    var finish = 50;
-    var unfinish = 30;
-    var array = [{text: '准备'}, {text: '动作一'}, {text: '动作二'}, {text: '动作三'}, {text: '动作四'}, {text: '动作五'}];
+
+    // 拉取后端数据
+    var planIndex = 1 //api
+    var planName = document[planIndex].title
+    const exerDoc = docu.compose(planName)[0]
+    var finished = 50 //api
+    var unfinished = 30 //api
+    var percent = finished/(finished+unfinished)*100
+    var week = [9, 10, 15, 9, 8, 12, 3] //api
+    var mission = document[planIndex].mission
+    var step = document[planIndex].exer
+    var active = 2; //api
+    var list = []
+    for(let i=0; i<exerDoc.length; i++){
+      list.push({
+        title: exerDoc[i].title,
+        desc: exerDoc[i].time,
+        thumb: '',
+        num: exerDoc[i].set,
+      })
+    }
+
     this.setData({
-      finish: finish,
-      unfinish: unfinish,
-      steps: array,
+      planName: planName,
+      mission: mission,
+      finished: finished,
+      unfinished: unfinished,
+      step: step,
+      active: active,
+      list: list
     })
-    var percent = finish/(finish+unfinish)*100;
-     
+
+    // 雷达图
+    radarChart = new wxCharts({
+      canvasId: 'radarCanvas',
+      type: 'radar',
+      categories: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+      series: [{
+        name: '锻炼时长',
+        data: week,
+        color: '#6ED2FF'
+      }],
+      width: 300,
+      height: 140,
+      legend: false,
+      extra: {
+        radar: {
+          max: 20
+        }
+      }
+    });
+      
     // 圆环图
     ringChart = new wxCharts({
       animation: true,
@@ -60,17 +122,17 @@ Page({
       },
       series: [{
         name: 'unfinished',
-        data: unfinish,
+        data: unfinished,
         stroke: false,
         color: '#E2460E'
       },  {
         name: 'finished',
-        data: finish,
+        data: finished,
         stroke: false,
         color: '#99CD2C'
       }],
       disablePieStroke: true,
-      width: windowWidth*0.4,
+      width: 300,
       // 调节画布高度，但超过200后会超出可视范围
       height: 150,
       dataLabel: false,
@@ -79,53 +141,9 @@ Page({
       background: '#f5f5f5',
       padding: 0
     });
-    ringChart.addEventListener('renderComplete', () => {
-      console.log('renderComplete');
-    });
     setTimeout(() => {
       ringChart.stopAnimation();
     }, 500);
-
-    // 雷达图
-    radarChart = new wxCharts({
-      canvasId: 'radarCanvas',
-      type: 'radar',
-      categories: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
-      series: [{
-        name: '成交量1',
-        data: [90, 110, 125, 95, 87, 122, 0],
-        color: '#6ED2FF'
-      }],
-      width: windowWidth*1.1,
-      height: 150,
-      legend: false,
-      extra: {
-        radar: {
-          max: 150
-        }
-      }
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
-    // 不然会发生tabbar中selected与实际上的index不同
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 2
-      })
-    }
   },
 
   /**
@@ -143,30 +161,12 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 页面相关事件处理函数
    */
-  onPullDownRefresh: function () {
-
-  },
-  onClick: function () {
-
-  },
-
-  touchHandler: function (e) {
-    console.log(radarChart.getCurrentDataIndex(e));
-},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  newPlan: function (e) {
+    let index = e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: './start?exer=' + this.data.list[index].title,
+    })
   }
 })

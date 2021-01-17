@@ -8,12 +8,6 @@
   background-color: white;
 }
 
-.inner{
-  height: 100%;
-  width: 100%;
-  margin: 1rpx;
-}
-
 /* padding 对view元素有用，对van-col元素无效 */
 .h1{
   font-size: larger;
@@ -26,6 +20,7 @@
   font-size: medium;
   font-weight: 600;
   padding: 20rpx;
+  padding-left: 1pc;
 }
 
 .text{
@@ -35,18 +30,29 @@
   font-weight: 400;
 }
 
+.canvas{
+  display: block;
+  height: 340rpx;
+}
+
 .legend{
   display: block;
   width: 30%;
   position: absolute;
   top: 160rpx;
-  right: 240rpx;
+  right: 280rpx;
+}
+
+.ring{
+  position: absolute;
+  top: 120rpx;
+  left: -170rpx;
 }
 
 .radar{
   position: absolute;
-  top: 120rpx;
-  right: 0;
+  top: 130rpx;
+  right: -110rpx;
 }
 
 .btn{

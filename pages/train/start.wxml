@@ -3,7 +3,7 @@
   <image src="../../icon/neck-stretch.jpg" mode="scaleToFit"></image>
   <view class="mask"></view>
   <view class="hover"  style="color: #99B6BF">
-    <view class="h1" style="font-size: 50rpx;">麦肯基坐式头部回缩运动</view>
+    <view class="h1" style="font-size: 50rpx;">{{exer}}</view>
     <text>\n</text>
     <text>\n</text>
     <view class="spread">
@@ -12,12 +12,14 @@
       <view>顺序</view>
     </view>
     <view class="spread" style="margin-top: 10rpx">
-      <view><text class="sp">N</text>次</view>
-      <view><text class="sp">10</text>S</view>
-      <view>No.<text class="sp">2</text></view>
+      <view><text class="sp">{{n}}</text>次</view>
+      <view><text class="sp">{{sec}}</text>S</view>
+      <view>No.<text class="sp">{{order}}</text></view>
     </view>
     <text>\n</text>
-    <van-button round size="normal" type="primary" color="#6ED2FF">开始训练</van-button>
+    <navigator url="./video" hover-class="navigator-hover">
+      <van-button round size="normal" type="primary" color="#6ED2FF">开始训练</van-button>
+    </navigator>
   </view>
   <van-row>
     <van-col>
@@ -26,12 +28,12 @@
   </van-row>
   <van-row>
     <van-col style="font-size: small">
-      <text style="padding-left: 1pc; padding-right: 1pc">开始姿势：坐在椅子上，平视前方，并完全放松</text>
+      <view style="padding-left: 1pc; padding-right: 1pc">开始姿势：{{start}}</view>
     </van-col>
   </van-row>
   <van-row>
     <van-col style="font-size: small">
-      <view style="padding-left: 1pc; padding-right: 1pc">锻炼肌肉：头长肌、颈长肌</view>
+      <view style="padding-left: 1pc; padding-right: 1pc">锻炼肌肉：{{muscle}}</view>
     </van-col>
   </van-row>
   <van-row>
@@ -39,12 +41,12 @@
   </van-row>
   <van-row>
     <van-col style="font-size: small">
-      <view style="padding-left: 1pc">过程阶段：缓慢且平稳的向后移动头部，直到不能再向后为止，然后保持5秒钟，回复初始位置</view>
+      <view style="padding-left: 1pc; padding-right: 1pc">过程阶段：{{process}}</view>
     </van-col>
   </van-row>
   <van-row>
     <van-col style="font-size: small">
-      <view style="padding-left: 1pc; padding-right: 1pc; padding-bottom: 1pc">注意事项：过程中不要将下巴翘起</view>
+      <view style="padding-left: 1pc; padding-right: 1pc; padding-bottom: 1pc">注意事项：{{note}}</view>
     </van-col>
   </van-row>
 </view>

@@ -1,71 +1,30 @@
 <!--pages/train/train.wxml-->
 
-<view class="h1" style="padding: 1pc">颈部慢性疼痛缓解训练计划</view>
+<view class="h1 van-hairline--bottom" style="padding: 10rpx">{{planName}}</view>
 
-<view class="box">
-  <view class="inner">
-    <!-- <van-col span="13" offset="3"><view class="h2">今日完成情况</view></van-col>
-    <van-col span="8"><view class="h2">历史完成情况</view></van-col> -->
-    <canvas canvas-id="ringCanvas" bindtouchstart="touchHandler"></canvas>
-    <view class="legend">
-      <van-tag color='#99CD2C'>已完成</van-tag>
-      <view style="margin-bottom: 4rpx">{{finish}}min</view>
-      <van-tag color='#E2460E'>未完成</van-tag>
-      <view>{{unfinish}}min</view>
-    </view>
-    <!-- <button type="primary" bindtap="updateData" style="margin-top:30rpx">更新title</button> -->
-    <!-- <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas> -->
-    <canvas canvas-id="radarCanvas" class="radar" bindtouchstart="touchHandler"></canvas>
+<view class="canvas">
+   <van-col offset="1" span="13"><view class="h2">今日完成情况</view></van-col>
+  <van-col span="10"><view class="h2">历史完成情况</view></van-col>
+  <canvas canvas-id="ringCanvas" class="ring"></canvas>
+  <view class="legend">
+    <van-tag color='#99CD2C'>已完成</van-tag>
+    <view style="margin-bottom: 70rpx">{{finished}}min</view>
+    <van-tag color='#E2460E'>未完成</van-tag>
+    <view>{{unfinished}}min</view>
   </view>
+  <canvas canvas-id="radarCanvas" class="radar"></canvas>
 </view>
 
 <view class="box">
-  <van-row>
-    <van-col offset=""><view class="h2">主要任务</view></van-col>
-  </van-row>
-  <van-row>
-    <van-col>
-      <view class="text">缓解长期错误姿势造成的颈部压力，舒缓肌肉，减少疼痛。准备器材：瑜伽垫、椅子、桌子</view>
-    </van-col>
-  </van-row>
-  <van-steps steps="{{steps}}" active="{{active}}" active-icon="success" active-color="#6ED2FF"/>
+  <view class="h2">主要任务</view>
+  <view class="text">{{mission}}</view>
+  <van-steps steps="{{step}}" active="{{active}}" active-icon="success" active-color="#6ED2FF"/>
 </view>
 
-<view>
-  <van-card
-  num="4"
-  desc="每个动作5s,每套动作间休息10s"
-  title="麦肯基坐式头部回缩运动"
-  thumb='https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0825%2F3a0df2a7j00qfmfzp000pd200hs00aqg00hs00aq.jpg&thumbnail=650x2147483647&quality=80&type=jpg'
-  >
+<view class="box" style="padding-bottom: 120rpx">
+  <van-card wx:for="{{list}}" wx:key="index" data-index='{{index}}' num="{{item.num}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" bindtap="newPlan">
     <view slot='price-top'>
-      <navigator url="./start" hover-class="navigator-hover">
-        <van-button size="small" type="primary" color="#6ED2FF">开始训练</van-button>
-      </navigator>
-    </view>
-  </van-card>
-  <van-card
-  num="4"
-  desc="每个动作1min,每套动作间休息15s"
-  title="麦肯基坐式头部回缩运动进阶"
-  thumb='https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0825%2F3a0df2a7j00qfmfzp000pd200hs00aqg00hs00aq.jpg&thumbnail=650x2147483647&quality=80&type=jpg'
-  >
-    <view slot='price-top'>
-      <navigator url="./start" hover-class="navigator-hover">
-        <van-button size="small" type="primary" color="#6ED2FF">开始训练</van-button>
-      </navigator>
-    </view>
-  </van-card>
-  <van-card
-  num="4"
-  desc="每个动作1min,每套动作间休息15s"
-  title="麦肯基坐式颈部伸展运动"
-  thumb='https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0825%2F403a08b3j00qfmfzp0014d200hs00lrg00hs00lr.jpg&thumbnail=650x2147483647&quality=80&type=jpg'
-  >
-    <view slot='price-top'>
-      <navigator url="./start" hover-class="navigator-hover">
-        <van-button size="small" type="primary" color="#6ED2FF">开始训练</van-button>
-      </navigator>
+      <van-button size="small" type="primary" color="#6ED2FF">开始训练</van-button>
     </view>
   </van-card>
 </view>

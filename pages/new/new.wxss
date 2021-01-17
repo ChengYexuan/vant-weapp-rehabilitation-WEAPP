@@ -1,1 +1,47 @@
 /* pages/new/new.wxss */
+.box{
+  height: 100%;
+  width: 100%;
+  align-items: flex-end;
+  margin-top: 4rpx;
+  margin-bottom: 4rpx;
+  background-color: white;
+}
+
+.sex{
+  height: 90%;
+  width: 90%;
+  margin: 1rpx;
+}
+.age{
+  height: 90%;
+  width: 90%;
+  margin: 1rpx;
+}
+.theexercise{
+  height: 90%;
+  width: 90%;
+  margin: 1rpx;
+}
+.theilltime{
+  height: 90%;
+  width: 90%;
+  margin: 1rpx;
+}
+.eval{
+  height: 90%;
+  width: 90%;
+  margin: 1rpx;
+}
+
+.t1{
+  font-size: larger;
+  font-weight: 550;
+  padding: 15rpx;
+}
+.t2{
+  font-size: larger;
+  font-weight: 550;
+  padding: 15rpx;
+}
+

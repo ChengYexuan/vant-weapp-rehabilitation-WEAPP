@@ -1,11 +1,45 @@
 // pages/new/new.js
+//import Toast from 'path/to/@vant/weapp/dist/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    columns: ['计划1', '计划2', '计划3', '计划4', '计划5'],
+    result: ['a', 'b'],
+    result:false,
+    illness:['i1','i2','i3','i4','i5','i6'],
+    illness:false,
+    illtime:['time1','time2','time3'],
+    illtime:false,
+    exercise:['ex1','ex2','ex3'],
+    exercise:false,
+    value: '',
+  },
+  onChange_num(event) {
+    // event.detail 为当前输入的值
+    console.log(event.detail);
+  },
+  onChange(event) {
+    this.setData({
+      result: event.detail,
+    });
+  },
+  onChange_ill(event) {
+    this.setData({
+      illness: event.detail,
+    });
+  },
+  onChange_time(event) {
+    this.setData({
+      illtime: event.detail,
+    });
+  },
+  onChange_ex(event) {
+    this.setData({
+      exercise: event.detail,
+    });
   },
 
   /**

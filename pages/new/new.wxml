@@ -1,2 +1,86 @@
 <!--pages/new/new.wxml-->
-<text>pages/new/new.wxml</text>
+
+<view class="box">
+  <view class="t1">基本信息</view>
+  <view class="sex">
+    <van-row>
+      <van-col span="4" offset="2">性别：</van-col>
+      <van-col span="10" offset="4">
+        <van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ 1 }}">
+          <van-checkbox name="a">男</van-checkbox>
+          <van-checkbox name="b">女</van-checkbox>
+        </van-checkbox-group>
+      </van-col>
+    </van-row>
+  </view>
+
+  <view class="age">
+    <van-row>
+      <van-col span="4" offset="2">年龄：</van-col>
+      <van-col span="10" >
+        <van-cell-group>
+          <van-field
+            value="{{ value }}"
+            placeholder="请输入年龄"
+            border="{{ false }}"
+            bind:change="onChange_num"
+          />
+        </van-cell-group>
+      </van-col>
+    </van-row>
+  </view>
+
+  <view class = "theexercise">
+    <van-row>
+      <van-col span="6" offset="2">运动强度:</van-col>
+      <van-col span="10" offset="2">
+        <van-checkbox-group value="{{ exercise }}" bind:change="onChange_ex" max="{{ 1 }}">
+          <van-checkbox name="ex1">低缓</van-checkbox>
+          <van-checkbox name="ex2">中度</van-checkbox>
+          <van-checkbox name="ex3">强烈</van-checkbox>
+        </van-checkbox-group>
+      </van-col>
+    </van-row>
+  </view>
+  <view class ="t2">评估选项</view>
+  <view class = "eval">
+    <van-row >
+      <van-col span="6" offset="2">疾病详情:</van-col>
+      <van-col span="10" offset="2">
+        <van-checkbox-group value="{{ illness }}" bind:change="onChange_ill" max="{{ 6 }}">
+          <van-checkbox name="i1">缓解疼痛</van-checkbox>
+          <van-checkbox name="i2">稳定脊柱</van-checkbox>
+          <van-checkbox name="i3">加强背部</van-checkbox>
+          <van-checkbox name="i4">缓解压力</van-checkbox>
+          <van-checkbox name="i5">恢复灵活</van-checkbox>
+          <van-checkbox name="i6">应付疼痛</van-checkbox>
+        </van-checkbox-group>
+      </van-col>
+    </van-row>
+  </view>
+  <view class = "line">
+    <text>\n</text>
+  </view>
+  <view class = "theilltime">
+    <van-row>
+      <van-col span="6" offset="2">疼痛时间:</van-col>
+      <van-col span="10" offset="2">
+        <van-checkbox-group value="{{ illtime }}" bind:change="onChange_time" max="{{ 1 }}">
+          <van-checkbox name="time1">疼痛不到4周</van-checkbox>
+          <van-checkbox name="time2">4至12周</van-checkbox>
+          <van-checkbox name="time3">超过12周</van-checkbox>
+          
+        </van-checkbox-group>
+      </van-col>
+    </van-row>
+
+
+
+    <van-row>
+      <van-col span="6" offset="20">
+        <van-button type="info" size="normal">确认</van-button>
+      </van-col>
+    </van-row>
+
+  </view>
+</view>

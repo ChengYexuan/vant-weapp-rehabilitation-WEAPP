@@ -16,9 +16,14 @@ Page({
   },
   
   // 事件处理函数
-  onConfirm() {
+  onConfirm(value) {
+    var time = new Date(value.detail)
+    var year = time.getFullYear();  // 获取完整的年份(4位,1970)
+    var month = time.getMonth() + 1;  // 获取月份(0-11,0代表1月)
+    var day = time.getDate();  // 获取日(1-31)
     wx.navigateTo({
-      url: '../history/historydetails?value=value'
+      // url: '../history/historydetails?year' + year + '&month' + month + '&day' + day
+      url: '../history/historydetails?obj=' + JSON.stringify({year:year,month:month,day:day})
     })
   },
 

@@ -1,13 +1,56 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="home-wrap">
+  <swiper indicator-dots="true" autoplay="true" interval="5000" circular="true" previous-margin="0rpx" next-margin="0rpx" class="swiper">
+    <swiper-item wx:for="{{imgUrls}}">
+      <image src='{{item}}' width="335" height="250" mode='widthFix' class='imgSwiper'/>
+    </swiper-item>
+  </swiper>
+
+  <view class="scroll">
+    <view class="scrollText">今日已完成训练</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="workbench">
+    <text class="title">我的数据</text>
+    <view class="blockBMI"> 
+      <view class="item item1">
+        <text class="text1">{{weight}} kg</text>
+        <text class="text2">体重</text>
+      </view>
+      <view class="line"></view>
+      <view class="item">
+        <text class="text1">{{height}} cm</text>
+        <text class="text2">身高</text>
+      </view>
+      <view class="line"></view>
+      <view class="item item3">
+        <text class="text1">{{BMI}}</text>
+        <text class="text2">BMI</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="workbench">
+    <text class="title">我的训练</text>
+    <view class="list">
+      <view class="items">
+        <button class='btn1'>
+          <image class='btnImg' src="../../images/myPlanIcon1.png"></image>
+        </button>
+        <text>新建训练</text>
+      </view>
+      <view class="items">
+        <button class='btn2'>
+          <image class='btnImg' src="../../images/myPlanIcon2.png"></image>
+        </button>
+        <text>开始训练</text>
+      </view>
+      <view class="items">
+        <button class='btn3'>
+          <image class='btnImg' src="../../images/myPlanIcon3.png"></image>
+        </button>
+        <text>历史方案</text>
+      </view>
+    </view>
   </view>
 </view>

@@ -73,12 +73,11 @@
         </van-checkbox-group>
       </van-col>
     </van-row>
-
-
-
     <van-row>
       <van-col span="6" offset="20">
-        <van-button type="info" size="normal">确认</van-button>
+        <navigator open-type="switchTab" url="../train/train">
+          <van-button type="info" size="normal">确认</van-button>
+        </navigator>
       </van-col>
     </van-row>
 

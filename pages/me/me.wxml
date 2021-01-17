@@ -1,2 +1,66 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<!-- 用户 openid -->
+<view class="box">
+  <text>\n</text>
+  <text>\n</text>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <text>\n</text>
+  <text>\n</text>
+</view>
+
+<view class="box">
+  <van-cell
+    is-link
+    value="修改资料"
+    link-type="navigateTo"
+    url="/pages/me/medetails"
+  />
+  <van-cell-group>
+    <van-cell center title="年龄" value="暂无" />
+    <van-cell center title="性别" value="暂无" />
+    <van-cell center title="身高" value="暂无" />
+    <van-cell center title="体重" value="暂无" />
+    <van-cell center title="手机号" value="暂无" />
+  </van-cell-group>
+</view>
+
+<view class="box">
+  <text>\n</text>
+  <text>\n</text>
+</view>
+
+<view class="box">
+  <van-row>
+    <van-col span="20"  offset="2">
+      <view class="h2">
+        <van-cell
+          is-link
+          title="联系我们"
+          link-type="navigateTo"
+          url="/pages/me/me"
+        />
+        <van-cell
+          is-link
+          title="系统设置"
+          link-type="navigateTo"
+          url="/pages/me/me"
+        />
+      </view>
+    </van-col>
+  </van-row>
+</view>
+
+<view class="box">
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+</view>

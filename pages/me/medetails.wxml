@@ -1,0 +1,90 @@
+<!--pages/me/medetails.wxml-->
+<view class="box">
+  <text>\n</text>
+  <van-divider
+    contentPosition="center"
+    dashed="false"
+    hairline="false"
+    customStyle="color: #9DE2F3; font-size: 18px; font-weight: 500;"
+  >
+    <text>修改个人资料</text>
+  </van-divider>
+  <text>\n</text>
+</view>
+
+<view class="box">
+  <van-row>
+    <van-col span="20"  offset="2">
+      <view class="h3">
+        <van-cell-group>
+          <van-field
+            value="{{ age }}"
+            required
+            clearable
+            label="年龄"
+            placeholder="请输入年龄"
+          />
+
+          <van-field
+            value="{{ sex }}"
+            required
+            clearable
+            label="性别"
+            placeholder="请输入性别"
+          />
+          
+          <van-field
+            value="{{ height }}"
+            required
+            clearable
+            label="身高"
+            placeholder="请输入身高"
+          />
+
+          <van-field
+            value="{{ weight }}"
+            required
+            clearable
+            label="体重"
+            placeholder="请输入体重"
+          />
+          
+          <van-field
+            value="{{ phone }}"
+            required
+            clearable
+            label="手机号"
+            placeholder="请输入手机号"
+          />
+        </van-cell-group>
+      </view>
+    </van-col>
+  </van-row>
+</view>
+
+<view class="box">
+  <text>\n</text>
+  <text>\n</text>
+</view>
+
+<view class="box">
+  <van-row>
+    <van-col span="20"  offset="2">
+      <van-button 
+        type="primary" 
+        size="large"
+        color="#9DE2F3"
+        bind:click="onClick"
+      >确定</van-button>
+    </van-col>
+  </van-row>
+</view>
+
+<view class="box">
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+  <text>\n</text>
+</view>

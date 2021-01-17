@@ -1,2 +1,43 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view class="boxblue">
+  <text class="datetop">\n</text>
+  <text class="datetop">\n</text>
+  <text class="datetop">{{ time }}</text>
+  <van-divider
+    contentPosition="center"
+    dashed="false"
+    hairline="false"
+    customStyle="color: white; border-color: #9DE2F3; font-size: 18px;"
+  >
+    <text class="h0">训练计划</text>
+  </van-divider>
+  <text class="datetop">\n</text>
+</view>
+
+<view class="box">
+  <van-row>
+    <van-col offset="1"><view class="h2">方案搜索</view></van-col>
+  </van-row>
+  <van-search
+    value="{{ value }}"
+    shape="round"
+    placeholder="请输入搜索关键词"
+  />
+</view>
+
+<view class="box">
+  <van-row>
+    <van-col offset="1"><view class="h2">方案查询</view></van-col>
+  </van-row>
+  <van-datetime-picker
+    type="date"
+    show-toolbar="false"
+    cancel-button-text=""
+    confirm-button-text="查询"
+    value="{{ currentDate }}"
+    bind:input="onInput"
+    bind:confirm="onConfirm"
+    max-date="{{ maxDate }}"
+    formatter="{{ formatter }}"
+  />
+</view>

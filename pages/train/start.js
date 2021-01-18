@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgURL:"",
     exer:'',
     list:[],
     n: 0,
@@ -39,6 +40,7 @@ Page({
       muscle: exerDoc[index].muscle,
       note: exerDoc[index].note,
       process: exerDoc[index].process,
+      imgURL: exerDoc[index].url
     })
   },
 

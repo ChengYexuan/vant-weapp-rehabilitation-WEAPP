@@ -1,6 +1,6 @@
 <!--pages/train/start.wxml-->
 <view class="box">
-  <image src="../../icon/neck-stretch.jpg" mode="scaleToFit"></image>
+  <image src="{{imgURL}}" mode="scaleToFit"></image>
   <view class="mask"></view>
   <view class="hover"  style="color: #99B6BF">
     <view class="h1" style="font-size: 50rpx;">{{exer}}</view>

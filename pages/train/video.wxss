@@ -1,1 +1,7 @@
 /* pages/train/video.wxss */
+.prog{
+  padding-top: 2pc;
+  display: block;
+  width: 200rpx;
+  margin: 0 auto;
+}

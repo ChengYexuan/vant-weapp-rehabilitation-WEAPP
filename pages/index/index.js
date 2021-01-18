@@ -10,9 +10,9 @@ Page({
     pressureArray: [],
     pressureIndex: [0, 0],
     imgUrls:[
-      '../../images/1.png',
-      '../../images/2.png',
-      '../../images/3.png',
+      '../../images/index1.png',
+      '../../images/index2.png',
+      '../../images/index3.png',
     ]
   },
 

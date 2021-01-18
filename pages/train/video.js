@@ -1,13 +1,17 @@
 // pages/train/video.js
+import Dialog from '@vant/weapp/dialog/dialog';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    progress: ''
+    progress: '',
+    record: 0,
+    gradientColor: {
+      '0%': '#ffd01e',
+      '100%': '#ee0a24',
+    },
+    show: false
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,7 +26,9 @@ Page({
   },
 
   onShow: function () {
-    var progress = 35; //api
+    var progress = 325; //api
+    this.videoContext = wx.createVideoContext('v1')
+    this.videoContext.seek(progress)
     this.setData({
       progress: progress
     })
@@ -32,6 +38,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    //api上传时间
   },
 
   /**
@@ -41,24 +48,19 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  currentTime: function(e) {
+    const total = 330
+    if(e.detail.currentTime>=total){
+      this.setData({
+        show: true
+      })
+    }
+    this.setData({
+      record: Math.floor(e.detail.currentTime/total*100)
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  
+  onClose() {
+    this.setData({ show: false });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

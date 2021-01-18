@@ -16,6 +16,12 @@ Page({
     ]
   },
 
+  toPageNew:function(){
+    wx.navigateTo({
+      url: '/pages/new/new',
+    })
+  },
+
   onLoad: function(options) {
     const _this = this;
     let pressureLow = [],

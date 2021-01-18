@@ -34,22 +34,28 @@
     <text class="title">我的训练</text>
     <view class="list">
       <view class="items">
-        <button class='btn1'>
-          <image class='btnImg' src="../../images/myPlanIcon1.png"></image>
-        </button>
-        <text>新建训练</text>
+        <navigator open-type="switchTab" url="../new/new">
+          <button class='btn1'>
+            <image class='btnImg' src="../../images/myPlanIcon1.png"></image>
+          </button>
+          <text>新建训练</text>
+        </navigator>
       </view>
       <view class="items">
-        <button class='btn2'>
-          <image class='btnImg' src="../../images/myPlanIcon2.png"></image>
-        </button>
-        <text>开始训练</text>
+        <navigator open-type="switchTab" url="../train/train">
+          <button class='btn2'>
+            <image class='btnImg' src="../../images/myPlanIcon2.png"></image>
+          </button>
+          <text>开始训练</text>
+        </navigator>
       </view>
       <view class="items">
-        <button class='btn3'>
-          <image class='btnImg' src="../../images/myPlanIcon3.png"></image>
-        </button>
-        <text>历史方案</text>
+        <navigator open-type="switchTab" url="../history/history">
+          <button class='btn3'>
+            <image class='btnImg' src="../../images/myPlanIcon3.png"></image>
+          </button>
+          <text>历史方案</text>
+        </navigator>
       </view>
     </view>
   </view>

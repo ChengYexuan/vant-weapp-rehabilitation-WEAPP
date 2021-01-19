@@ -17,9 +17,7 @@
       <view>No.<text class="sp">{{order}}</text></view>
     </view>
     <text>\n</text>
-    <navigator url="./video" hover-class="navigator-hover">
-      <van-button round size="normal" type="primary" color="#6ED2FF">开始训练</van-button>
-    </navigator>
+    <van-button wx:if="{{flag}}" round size="normal" type="primary" color="#6ED2FF" bindtap="start">开始训练</van-button>
   </view>
   <van-row>
     <van-col>

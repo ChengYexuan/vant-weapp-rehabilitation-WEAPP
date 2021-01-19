@@ -21,11 +21,12 @@
   <van-steps steps="{{step}}" active="{{active}}" active-icon="success" active-color="#6ED2FF"/>
 </view>
 
-<view class="box" style="padding-bottom: 120rpx">
-  <van-card wx:for="{{list}}" wx:key="index" data-index='{{index}}' num="{{item.num}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" bindtap="newPlan">
+<view class="box">
+  <van-card wx:for="{{list}}" wx:key="index" data-index='{{index}}' num="{{item.num}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" bindtap="seePlan">
     <view slot='price-top'>
-      <van-button size="small" type="primary" color="#6ED2FF">开始训练</van-button>
+      <van-button size="small" type="primary" color="#6ED2FF">查看详情</van-button>
     </view>
   </van-card>
 </view>
 
+<van-button style="padding-bottom: 120rpx"size="large" type="primary" color="#6ED2FF" bindtap="startPlan">开始训练</van-button>

@@ -22,11 +22,11 @@
     url="/pages/me/medetails"
   />
   <van-cell-group>
-    <van-cell center title="年龄" value="暂无" />
-    <van-cell center title="性别" value="暂无" />
-    <van-cell center title="身高" value="暂无" />
-    <van-cell center title="体重" value="暂无" />
-    <van-cell center title="手机号" value="暂无" />
+    <van-cell center title="年龄" value="{{currentAge}}" />
+    <van-cell center title="性别" value="{{currentSex}}" />
+    <van-cell center title="身高" value="{{currentHeight}}" />
+    <van-cell center title="体重" value="{{currentWeight}}" />
+    <van-cell center title="手机号" value="{{currentPhoneNum}}" />
   </van-cell-group>
 </view>
 

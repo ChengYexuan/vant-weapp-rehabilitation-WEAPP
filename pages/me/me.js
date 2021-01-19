@@ -10,6 +10,11 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    currentAge: '暂无',
+    currentSex: '暂无',
+    currentHeight: '暂无',
+    currentWeight: '暂无',
+    currentPhoneNum: '暂无',
   },
   
   /**

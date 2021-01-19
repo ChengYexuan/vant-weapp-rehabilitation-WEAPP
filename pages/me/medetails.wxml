@@ -22,7 +22,7 @@
             required
             clearable
             label="年龄"
-            placeholder="请输入年龄"
+            placeholder="{{currentAge}}"
           />
 
           <van-field
@@ -30,7 +30,7 @@
             required
             clearable
             label="性别"
-            placeholder="请输入性别"
+            placeholder="{{currentSex}}"
           />
           
           <van-field
@@ -38,7 +38,7 @@
             required
             clearable
             label="身高"
-            placeholder="请输入身高"
+            placeholder="{{currentHeight}}"
           />
 
           <van-field
@@ -46,7 +46,7 @@
             required
             clearable
             label="体重"
-            placeholder="请输入体重"
+            placeholder="{{currentWeight}}"
           />
           
           <van-field
@@ -54,7 +54,7 @@
             required
             clearable
             label="手机号"
-            placeholder="请输入手机号"
+            placeholder="{{currentPhoneNum}}"
           />
         </van-cell-group>
       </view>

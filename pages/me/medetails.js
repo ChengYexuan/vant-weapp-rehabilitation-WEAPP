@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    currentAge: '暂无',
+    currentSex: '暂无',
+    currentHeight: '暂无',
+    currentWeight: '暂无',
+    currentPhoneNum: '暂无',
   },
 
   onClick() {

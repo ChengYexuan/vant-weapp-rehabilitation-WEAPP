@@ -18,8 +18,7 @@
   <van-cell
     is-link
     value="修改资料"
-    link-type="navigateTo"
-    url="/pages/me/medetails"
+    bindtap="toMeDetails"
   />
   <van-cell-group>
     <van-cell center title="年龄" value="{{currentAge}}" />

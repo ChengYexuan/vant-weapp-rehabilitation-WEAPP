@@ -1,6 +1,7 @@
 // pages/history/historydetails.js
 const docu = require('../../static/docu.js')
 const document = docu.plan
+const app = getApp()
 
 Page({
   /**
@@ -35,6 +36,22 @@ Page({
   onShow: function () {
 
     // 拉取后端数据
+    // wx.request( {
+    //   url: app.globalData.ipstr + "/plan/history",
+    //   data:{
+    //     userID: app.globalData.id,
+    //     date: this.data.time
+    //   },
+    //   success: res => {
+    //     this.setData({
+    //       planID: res.data.planID,
+    //       active: res.data.actionNum,
+    //       sec: res.data.actionSec
+    //     })
+    //     app.globalData.index = res.data.actionNum
+    //   }
+    // })
+
     var planIndex = 1 //api
     var planName = document[planIndex].title
     const exerDoc = docu.compose(planName)[0]
@@ -72,8 +89,12 @@ Page({
    */
   exerDetail: function (e) {
     let index = e.currentTarget.dataset.index;
+    // wx.navigateTo({
+    //   url: '../train/start'
+    // })
+    console.log(this.data.list)
     wx.navigateTo({
-      url: '/pages/train/start?exer=' + this.data.list[index].title,
+      url: '../train/start?exer=' + this.data.list[index].title,
     })
   },
 

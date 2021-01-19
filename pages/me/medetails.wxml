@@ -18,43 +18,13 @@
       <view class="h3">
         <van-cell-group>
           <van-field
-            value="{{ age }}"
+            wx:for="{{detailList}}" 
+            wx:key="index"
             required
             clearable
-            label="年龄"
-            placeholder="{{currentAge}}"
-          />
-
-          <van-field
-            value="{{ sex }}"
-            required
-            clearable
-            label="性别"
-            placeholder="{{currentSex}}"
-          />
-          
-          <van-field
-            value="{{ height }}"
-            required
-            clearable
-            label="身高"
-            placeholder="{{currentHeight}}"
-          />
-
-          <van-field
-            value="{{ weight }}"
-            required
-            clearable
-            label="体重"
-            placeholder="{{currentWeight}}"
-          />
-          
-          <van-field
-            value="{{ phone }}"
-            required
-            clearable
-            label="手机号"
-            placeholder="{{currentPhoneNum}}"
+            label="{{item.text}}"
+            placeholder="{{item.current}}"
+            bind:change="onChange"
           />
         </van-cell-group>
       </view>

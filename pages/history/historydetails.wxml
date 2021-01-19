@@ -15,8 +15,8 @@
     is-link
     wx:for="{{list}}" 
     wx:key="index"
+    data-index="{{index}}"
     title="{{item.step}}：{{item.title}}"
-    link-type="navigateTo"
-    url="exerDetail"
+    bindtap="exerDetail"
   />
 </view>

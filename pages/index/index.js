@@ -10,6 +10,7 @@ Page({
     pressureArray: [],
     pressureIndex: [0, 0],
     imgUrls:[
+<<<<<<< HEAD
       '../../images/1.png',
       '../../images/2.png',
       '../../images/3.png',
@@ -74,6 +75,12 @@ Page({
         selected: 0
       })
     }
+=======
+      '../../images/index1.png',
+      '../../images/index2.png',
+      '../../images/index3.png',
+    ]
+>>>>>>> 894946737879297860abb27cf0d90f3f27a55d06
   },
 
   toPageNew:function(){

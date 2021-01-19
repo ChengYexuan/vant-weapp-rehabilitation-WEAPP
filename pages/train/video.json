@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "van-progress": "@vant/weapp/progress/index"
+    "van-circle": "@vant/weapp/circle/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

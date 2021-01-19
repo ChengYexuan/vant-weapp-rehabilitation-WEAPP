@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    flag: false,
+    imgURL:"",
     exer:'',
     list:[],
     n: 0,
@@ -27,10 +29,24 @@ Page({
     for (let i = 0; i < exerDoc.length; i++) {
       list.push(exerDoc[i].title)
     }
-    var index = list.indexOf(options.exer)
+    var flag = options.exer.charAt(options.exer.length-1)
+    console.log(flag)
+    if(!parseInt(flag)){
+      var name = options.exer.substr(0, options.exer.length-1)
+      this.setData({
+        flag: false
+      })
+    }
+    else{
+      var name = options.exer.substr(0, options.exer.length-1)
+      this.setData({
+        flag: true
+      })
+    }
+    var index = list.indexOf(name)
     var subs = exerDoc[index].time.split('：')[1].split(' ')[0]
     this.setData({
-      exer: options.exer,
+      exer: name,
       list: list,
       n: exerDoc[index].set.split('：')[1],
       sec: subs.substring(0, subs.length-1),
@@ -39,6 +55,7 @@ Page({
       muscle: exerDoc[index].muscle,
       note: exerDoc[index].note,
       process: exerDoc[index].process,
+      imgURL: exerDoc[index].url
     })
   },
 
@@ -71,9 +88,11 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 页面相关事件处理函数
    */
-  onPullDownRefresh: function () {
-
+  start: function () {
+    wx.navigateTo({
+      url: './video',
+    })
   }
 })

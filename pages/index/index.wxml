@@ -18,7 +18,7 @@
 <view wx:else>
 <view class="home-wrap">
   <swiper indicator-dots="true" autoplay="true" interval="5000" circular="true" previous-margin="0rpx" next-margin="0rpx" class="swiper">
-    <swiper-item wx:for="{{imgUrls}}">
+    <swiper-item wx:for="{{imgUrls}}" wx:key="index">
       <image src='{{item}}' width="335" height="250" mode='widthFix' class='imgSwiper'/>
     </swiper-item>
   </swiper>
@@ -71,4 +71,8 @@
     </view>
   </view>
 </view>
+<<<<<<< HEAD
 </view>
+=======
+
+>>>>>>> 894946737879297860abb27cf0d90f3f27a55d06

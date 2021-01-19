@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    ipstr: "http://47.114.156.165:12306",
   }
 })

@@ -1,0 +1,23 @@
+<!--pages/login/login.wxml-->
+<view wx:if="{{isHide}}">
+  <view wx:if="{{canIUse}}" >
+    <view class='header'>
+      <image src="../../images/wxLogo.png"></image>
+    </view>
+    <view class='content'>
+      <view>申请获取以下权限</view>
+      <text>获得你的公开信息(昵称，头像等)</text>
+    </view>
+ 
+    <button class='btnAuth' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    
+  </view>
+  <view wx:else>请升级微信版本</view>
+</view>
+
+<view wx:else>
+  <view class='backView'>
+    <image class='backImage' src='../../images/loginBG_1.jpg' mode='aspectFill'></image>
+    <button class="btnStart" bindtap="toPageIndex">开始训练</button>
+  </view>
+</view>

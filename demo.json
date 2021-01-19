@@ -1,0 +1,72 @@
+{
+    "trainingItems": [
+        {
+            "itemID": 1,
+            "itemName": "颈部慢性疼痛缓解计划",
+            "mainTask": "缓解长期错误姿势造成的颈部压力，舒缓肌肉，减少疼痛",
+            "procedure": {
+                "preparation": {
+                    "equipment": ["瑜伽垫", "椅子", "桌子"]
+                },
+                "movement": [
+                    {
+                        "movementName": "麦肯基坐式头部回缩运动",
+                        "duration": 5,
+                        "restTime": 10,
+                        "times": null,
+                        "beginPosture": "坐在椅子上，平视前方，并完全放松",
+                        "process": "缓慢且平稳的向后移动头部，直到不能再向后为止，然后保持5秒钟，回复初始位置",
+                        "note": "过程中不要将下巴翘起",
+                        "trainedMuscle": ["头长肌", "颈长肌"]
+                    },
+                    {
+                        "movementName": "麦肯基坐式头部回缩运动进阶",
+                        "duration": 5,
+                        "restTime": 12,
+                        "times": null,
+                        "beginPosture": "坐在椅子上，平视前方，并完全放松",
+                        "process": "双手扶住下巴，缓慢且平稳的向后移动头部，直到不能再向后为止，然后保持5秒钟，回复初始位置",
+                        "note": "过程中不要将下巴翘起",
+                        "trainedMuscle": ["头长肌", "颈长肌"]
+                    },
+                    {
+                        "movementName": "麦肯基坐式颈部伸展运动",
+                        "duration": 5,
+                        "restTime": 15,
+                        "times": null,
+                        "beginPosture": "坐在椅子上，头部保持回缩姿势",
+                        "process": "抬起下巴，头部尽量后仰，然后头部向左右转动。重复3组后恢复到初始姿势",
+                        "note": "每次练习时尽量做到最大幅度",
+                        "trainedMuscle": ["斜方肌", "头夹肌", "颈夹肌", "头半棘肌", "头最长肌", "颈最长肌"]
+                    },
+                    {
+                        "movementName": "麦肯基平躺头部回缩运动",
+                        "duration": 5,
+                        "restTime": 10,
+                        "times": null,
+                        "beginPosture": "仰卧，目视天花板",
+                        "process": "用头部力量使头部贴近地面，同时收回下颚，保持几秒后回复初始位置",
+                        "note": "每次练习时尽量做到最大幅度",
+                        "trainedMuscle": ["头长肌", "颈长肌"]
+                    },
+                    {
+                        "movementName": "麦肯基仰卧颈部回缩运动",
+                        "duration": 5,
+                        "restTime": 10,
+                        "times": null,
+                        "beginPosture": "仰卧，躺在床边用一只手支撑头部，使你的头、脖子和肩膀都露在床沿外",
+                        "process": "用手支撑头部同时，缓慢地仰头，然后慢慢移开手，尽可能看向地板，保持这一姿势同时，头部稍稍左右转动，并继续保持后仰，持续3秒，最后回复初始位置",
+                        "note": "完成这一动作后，不要立即起身。平躺休息一分钟",
+                        "trainedMuscle": ["斜方肌", "头夹肌", "颈夹肌", "头半棘肌", "头最长肌", "颈最长肌"]
+                    }
+                ]
+            }
+        },
+        {
+            "itemID": 2,
+            "itemName": "颈椎病疼痛训练计划",
+            "mainTask": "",
+            "procedure": {}
+        }
+    ]
+}

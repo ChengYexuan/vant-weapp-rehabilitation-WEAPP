@@ -4,35 +4,18 @@ const app = getApp()
 
 Page({
   data: {
-    weight: 60,
-    height: 175,
-    BMI: 19.6,
-    pressureArray: [],
-    pressureIndex: [0, 0],
-    imgUrls:[
-      '../../images/1.png',
-      '../../images/2.png',
-      '../../images/3.png',
-      '../../images/4.png',
-    ],
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     isHide: false
   },
 
+  toPageIndex:function(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+
   onLoad: function() {
     var that = this;
-    wx.request({
-      url: 'url',
-      success:function(res){
-        that.setData({
-          weight:res.weight,
-          height:res.height,
-          BMI:res.weight/res.height
-        });
-      }
-    });
-
-    
     // 查看是否授权
     wx.getSetting({
       success: function(res) {
@@ -65,33 +48,6 @@ Page({
     });
   },
 
-  onShow: function () {
-    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
-    // 不然会发生tabbar中selected与实际上的index不同
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      })
-    }
-  },
-
-  toPageNew:function(){
-    wx.switchTab({
-      url: '/pages/new/new',
-    })
-  },
-  toPageTrain:function(){
-    wx.switchTab({
-      url: '/pages/train/train',
-    })
-  },
-  toPageHistory:function(){
-    wx.switchTab({
-      url: '/pages/history/history',
-    })
-  },
-
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {//用户按了允许授权按钮
       var that = this;
@@ -102,6 +58,9 @@ Page({
       that.setData({
         isHide: false
       });
+      // wx.switchTab({
+      //   url: '/pages/index/index',
+      // })
     } 
     else {//用户按了拒绝按钮
       wx.showModal({
@@ -118,6 +77,4 @@ Page({
       });
     }
   }
-
-  
 })

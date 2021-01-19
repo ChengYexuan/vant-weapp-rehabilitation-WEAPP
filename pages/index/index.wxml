@@ -1,4 +1,21 @@
 <!--index.wxml-->
+<view wx:if="{{isHide}}">
+  <view wx:if="{{canIUse}}" >
+    <view class='header'>
+      <image src="../../images/wxLogo.png"></image>
+    </view>
+    <view class='content'>
+      <view>申请获取以下权限</view>
+      <text>获得你的公开信息(昵称，头像等)</text>
+    </view>
+ 
+    <button class='btnAuth' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+
+  </view>
+  <view wx:else>请升级微信版本</view>
+</view>
+ 
+<view wx:else>
 <view class="home-wrap">
   <swiper indicator-dots="true" autoplay="true" interval="5000" circular="true" previous-margin="0rpx" next-margin="0rpx" class="swiper">
     <swiper-item wx:for="{{imgUrls}}">
@@ -34,29 +51,24 @@
     <text class="title">我的训练</text>
     <view class="list">
       <view class="items">
-        <navigator open-type="switchTab" url="../new/new">
-          <button class='btn1'>
-            <image class='btnImg' src="../../images/myPlanIcon1.png"></image>
-          </button>
-          <text>新建训练</text>
-        </navigator>
+        <button class='btn1' bindtap="toPageNew">
+          <image class='btnImg' src="../../images/myPlanIcon1.png"></image>
+        </button>
+        <text>新建训练</text>
       </view>
       <view class="items">
-        <navigator open-type="switchTab" url="../train/train">
-          <button class='btn2'>
-            <image class='btnImg' src="../../images/myPlanIcon2.png"></image>
-          </button>
-          <text>开始训练</text>
-        </navigator>
+        <button class='btn2' bindtap="toPageTrain">
+          <image class='btnImg' src="../../images/myPlanIcon2.png"></image>
+        </button>
+        <text>开始训练</text>
       </view>
       <view class="items">
-        <navigator open-type="switchTab" url="../history/history">
-          <button class='btn3'>
-            <image class='btnImg' src="../../images/myPlanIcon3.png"></image>
-          </button>
-          <text>历史方案</text>
-        </navigator>
+        <button class='btn3' bindtap="toPageHistory">
+          <image class='btnImg' src="../../images/myPlanIcon3.png"></image>
+        </button>
+        <text>历史方案</text>
       </view>
     </view>
   </view>
+</view>
 </view>

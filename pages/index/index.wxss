@@ -191,3 +191,33 @@
   font-size: 28rpx;
   color: rgb(99,99,99);
 }
+
+ 
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 150rpx;
+  height: 150rpx;
+}
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 30rpx;
+}
+.btnAuth {
+  border-radius: 90rpx;
+  font-size: 35rpx;
+  width: 500rpx;
+}
+ 

@@ -60,7 +60,7 @@ Page({
     // })
           
     app.globalData.progressTime = 325
-    app.globalData.index = 5
+    app.globalData.index = 4
     var planName = document[this.data.planID].title
     var finished = 50 //api
     var unfinished = 30 //api

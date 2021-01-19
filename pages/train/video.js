@@ -78,7 +78,7 @@ Page({
       this.setData({
         show: true
       })
-      if (this.data.index === -1) {
+      if (this.data.index === 4) {
         this.setData({
           text: '恭喜你完成训练！'
         })
@@ -107,15 +107,16 @@ Page({
     //   }
     // })
     app.globalData.progressTime = this.data.record
-    console.log(this.data.index + this.data.record)
-    if (this.index === -1) {
-      wx.navigateTo({
+    console.log(this.data.index)
+    if (this.data.index === 4) {
+      wx.switchTab({
         url: '../train/train',
       })
     }
     else{
+      console.log('in else')
       wx.navigateTo({
-        url: '../train/start.js',
+        url: '../train/start',
       })
     }
   },

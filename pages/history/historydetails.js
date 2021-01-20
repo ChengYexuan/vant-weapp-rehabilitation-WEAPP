@@ -36,31 +36,36 @@ Page({
   onShow: function () {
 
     // 拉取后端数据
-    // wx.request( {
-    //   url: app.globalData.ipstr + "/plan/history",
-    //   data:{
-    //     userID: app.globalData.id,
-    //     date: this.data.time
-    //   },
-    //   success: res => {
-    //     this.setData({
-    //       planID: res.data.planID,
-    //       active: res.data.actionNum,
-    //       sec: res.data.actionSec
-    //     })
-    //     app.globalData.index = res.data.actionNum
-    //   }
-    // })
+    console.log(this.data.time),
+    wx.request( {
+      url: app.globalData.ipstr + "/plan/history",
+      data:{
+        userID: app.globalData.id,
+        date: this.data.time
+      },
+      success: res => {
+        this.setData({
+          planID: res.data.data.planID
+        }),
+        console.log(res.data),
+        console.log(this.data.planID)
+      }
+    })
 
-    var planIndex = 1 //api
-    var planName = document[planIndex].title
-    const exerDoc = docu.compose(planName)[0]
-    var list = []
-    for(let i=0; i<exerDoc.length; i++){
-      list.push({
-        step: exerDoc[i].step,
-        title: exerDoc[i].title,
-      })
+    // var planIndex = 1 //api
+    if (this.data.planID == null) {
+      var planName = "无"
+    }
+    else{
+      var planName = document[this.data.planID].title
+      const exerDoc = docu.compose(planName)[0]
+      var list = []
+      for(let i=0; i<exerDoc.length; i++){
+        list.push({
+          step: exerDoc[i].step,
+          title: exerDoc[i].title,
+        })
+      }
     }
 
     this.setData({
@@ -89,9 +94,6 @@ Page({
    */
   exerDetail: function (e) {
     let index = e.currentTarget.dataset.index;
-    // wx.navigateTo({
-    //   url: '../train/start'
-    // })
     console.log(this.data.list)
     wx.navigateTo({
       url: '../train/start?exer=' + this.data.list[index].title,

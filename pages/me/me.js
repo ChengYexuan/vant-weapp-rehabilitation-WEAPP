@@ -82,8 +82,8 @@ Page({
     wx.request( {
       url: app.globalData.ipstr + "/user/info",
       data:{
-        userID: app.globalData.id
-        // userID: "Coccccccyx"
+        // userID: app.globalData.id
+        userID: "wdyabcd"
       },
       success: res => {
         console.log(res.data),
@@ -103,7 +103,7 @@ Page({
     // var currentWeight = 1 //api
     // var currentPhoneNum = 1 //api
     const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
-    var currentSex = sexDict[this.data.currentSexIndex].sex
+    var currentSex = sexDict[this.data.sexIndex].sex
 
     if (this.data.age != null) {
       this.setData({

@@ -5,10 +5,26 @@ const app = getApp()
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    isHide: false
+    isHide: false,
+    hasUserInfo:false,
+    userInfo:{},
+    imgBgURL:app.globalData.ipstr+"images/loginBGG_1.jpg",
   },
 
   toPageIndex:function(){
+    console.log("login2index");
+    // wx.getUserInfo({
+    //   success: res => {
+    //     app.globalData.userInfo = res.userInfo
+    //     app.globalData.userID = res.userID
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }
+    // }),
+    console.log(app.globalData.userInfo.nickName);
+    
     wx.switchTab({
       url: '/pages/index/index',
     })
@@ -25,14 +41,14 @@ Page({
             //用户授权成功后，调用微信的 wx.login 接口，从而获取code
               wx.login({
                 success: res => {
-                  // 获取到用户的 code 之后：res.code
                   console.log("用户的code:" + res.code);
-                  // wx.request({
-                  //   url: 'https://api.weixin.qq.com/sns/jscode2session?appid=自己的APPID&secret=自己的SECRET&js_code=' + res.code + '&grant_type=authorization_code',
-                  //   success:res=>{
-                  //     console.log("用户的openid:"+res.data.openid);
-                  //   }
-                  // })
+                  //获取openid
+                  wx.request({
+                    url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx18ed1ca25953d92b&secret=1906dab1d235f2fe97fad7fe7f67de47&js_code=' + res.code + '&grant_type=authorization_code',
+                    success:res=>{
+                      console.log("openid:"+res.data.openid);
+                    }
+                  })
                 }
               });
             }
@@ -46,21 +62,44 @@ Page({
         }
       }
     });
+
+  },
+
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   },
 
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {//用户按了允许授权按钮
       var that = this;
-      // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
       console.log(e.detail.userInfo);
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({
-        isHide: false
+        isHide: false,
       });
-      // wx.switchTab({
-      //   url: '/pages/index/index',
-      // })
+      //赋值全局变量
+      app.globalData.userInfo = e.detail.userInfo;
+      app.globalData.id = e.detail.userInfo.nickName;
+      //授权成功后，注册新用户
+      wx.request({
+        url: app.globalData.ipstr+"/user/new",
+        method:'POST',
+        data:{
+          userID:e.detail.userInfo.nickName,
+          sex:e.detail.userInfo.gender,
+        },
+        header:{
+          "Content-Type":"application/x-www-form-urlencoded"
+        },
+        success:function(res){
+          console.log(res.data);
+        }
+      })
     } 
     else {//用户按了拒绝按钮
       wx.showModal({
@@ -77,4 +116,5 @@ Page({
       });
     }
   }
+  
 })

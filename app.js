@@ -49,9 +49,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    id: null,
+    id: "wdyabcd",
     gender: null,
-    ipstr: null,
+    ipstr: "http://47.114.156.165:12306/",
     index: 0, //动作序号
     progressTime: null //动作进度
   }

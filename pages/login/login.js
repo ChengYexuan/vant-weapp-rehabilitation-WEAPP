@@ -8,7 +8,8 @@ Page({
     isHide: false,
     hasUserInfo:false,
     userInfo:{},
-    imgBgURL:app.globalData.ipstr+"images/loginBGG_1.jpg",
+    wxLogoURL:app.globalData.ipstr+"/images/wxLogo.png",
+    imgBgURL:app.globalData.ipstr+"/images/loginBG_1.jpg",
   },
 
   /**

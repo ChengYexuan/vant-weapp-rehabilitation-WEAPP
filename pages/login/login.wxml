@@ -2,7 +2,7 @@
 <view wx:if="{{isHide}}">
   <view wx:if="{{canIUse}}" >
     <view class='header'>
-      <image src="{{imgBgURL}}"></image>
+      <image src="{{wxLogoURL}}"></image>
     </view>
     <view class='content'>
       <view>申请获取以下权限</view>
@@ -17,7 +17,7 @@
 
 <view wx:else>
   <view class='backView'>
-    <image class='backImage' src='../../images/loginBG_1.jpg' mode='aspectFill'></image>
+    <image class='backImage' src='{{imgBgURL}}' mode='aspectFill'></image>
     <button class="btnStart" bindtap="toPageIndex" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始训练</button>
   </view>
 </view>

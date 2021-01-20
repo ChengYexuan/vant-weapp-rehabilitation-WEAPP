@@ -8,23 +8,37 @@ Page({
     height: 175,
     BMI: 19.6,
     imgUrls:[
-      '../../images/index1.png',
-      '../../images/index2.png',
-      '../../images/index3.png',
-      '../../images/index4.png',
+      app.globalData.ipstr+"images/index1.png",
+      app.globalData.ipstr+"images/index2.png",
+      app.globalData.ipstr+"images/index3.png",
+      app.globalData.ipstr+"images/index4.png",
     ],
+    btn1ImgUrl: app.globalData.ipstr+"images/myPlanIcon1.png",
+    btn2ImgUrl: app.globalData.ipstr+"images/myPlanIcon2.png",
+    btn3ImgUrl: app.globalData.ipstr+"images/myPlanIcon3.png",
   },
 
   onLoad: function() {
+    console.log("userID:"+app.globalData.id)
     var that = this;
     wx.request({
-      url: 'url',
+      url: app.globalData.ipstr+"/user/info",
+      method:'GET',
+      data:{
+        userID:app.globalData.id
+        //userID:"wdyabcd"
+      },
+      header:{
+        'content-type':'application/json'
+      },
       success:function(res){
+        console.log("request ok");
+        console.log(res.data);
         that.setData({
-          weight:res.weight,
-          height:res.height,
-          BMI:res.weight/res.height
-        });
+          weight:res.data.data.weight,
+          height:res.data.data.height,
+          BMI:(res.data.data.weight/res.data.data.height/res.data.data.height*10000).toFixed(2)
+        })
       }
     });
   },

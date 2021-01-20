@@ -54,7 +54,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    id: null,
+    id: "wdyabcd",
     gender: null,
     ipstr: "http://47.114.156.165:12306/",
     serialNo: null,

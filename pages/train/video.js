@@ -25,7 +25,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    console.log('参数serialNo:')
+    console.log(app.globalData.serialNo)
+    console.log('参数actionNum:')
+    console.log(this.data.index)
+    console.log('参数actionSec:')
+    console.log(this.data.record)
+  },
 
   /**
    * 页面显示时--获取全局变量、自动定位视频进度
@@ -35,7 +42,7 @@ Page({
       index: app.globalData.index,
       record: app.globalData.progressTime,
       // videoURL: exerDoc[index].video
-      videoURL: 'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400'
+      videoURL: 'http://47.114.156.165:12306/videos/videoSample.mp4'
     })
     this.videoContext = wx.createVideoContext('v')
     this.videoContext.seek(this.data.record)
@@ -50,15 +57,18 @@ Page({
    * 页面卸载时--上传record到后端
    */
   onUnload: function () {
-    // wx.request({
-    //   url: ipstr + '/plan/process',
-    //   method: "PUT",
-    //   data: {
-    //     userID: app.globalData.id,
-    //     actionNum: this.data.index,
-    //     actionSec: this.data.record
-    //   }
-    // })
+    wx.request({
+      url: app.globalData.ipstr + '/plan/process',
+      method: "PUT",
+      data: {
+        serialNo: app.globalData.serialNo,
+        actionNum: this.data.index,
+        actionPercent: this.data.record
+      },
+      success: res => {
+        console.log(res)
+      }
+    })
     app.globalData.progressTime = this.data.record
     console.log(this.data.index)
     console.log(this.data.record)
@@ -97,15 +107,18 @@ Page({
    */
   onClose() {
     this.setData({ show: false })
-    // wx.request({
-    //   url: ipstr + '/plan/process',
-    //   method: "PUT",
-    //   data: {
-    //     userID: app.globalData.id,
-    //     actionNum: this.data.index,
-    //     actionSec: this.data.record
-    //   }
-    // })
+    wx.request({
+      url: app.globalData.ipstr + '/plan/process',
+      method: "PUT",
+      data: {
+        serialNo: app.globalData.serialNo,
+        actionNum: this.data.data.index,
+        actionSec: this.data.record
+      },
+      success: res => {
+        console.log(res)
+      }
+    })
     app.globalData.progressTime = this.data.record
     console.log(this.data.index)
     if (this.data.index === 4) {
@@ -114,7 +127,6 @@ Page({
       })
     }
     else{
-      console.log('in else')
       wx.navigateTo({
         url: '../train/start',
       })

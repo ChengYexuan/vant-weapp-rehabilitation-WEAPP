@@ -8,7 +8,7 @@
       <view>申请获取以下权限</view>
       <text>获得你的公开信息(昵称，头像等)</text>
     </view>
- 
+    <!-- 该button在被点击后不会立即执行bindGetUserInfo里的代码，而是弹出微信自带的授权对话框，在完成对话框后再执行bind方法 -->
     <button class='btnAuth' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">授权登录</button>
     
   </view>

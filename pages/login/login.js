@@ -1,4 +1,4 @@
-//index.js
+//login.js
 //获取应用实例
 const app = getApp()
 
@@ -19,27 +19,9 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success: function(res) {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: function(res) {
-            //用户授权成功后，调用微信的 wx.login 接口，从而获取code
-              wx.login({
-                success: res => {
-                  // 获取到用户的 code 之后：res.code
-                  console.log("用户的code:" + res.code);
-                  // wx.request({
-                  //   url: 'https://api.weixin.qq.com/sns/jscode2session?appid=自己的APPID&secret=自己的SECRET&js_code=' + res.code + '&grant_type=authorization_code',
-                  //   success:res=>{
-                  //     console.log("用户的openid:"+res.data.openid);
-                  //   }
-                  // })
-                }
-              });
-            }
-          });
-        } 
-        else {
+        if (!res.authSetting['scope.userInfo']) {
           // 用户没有授权，改变 isHide 的值，显示授权页面
+          console.log('之前没有授权过')
           that.setData({
             isHide: true
           });
@@ -49,18 +31,23 @@ Page({
   },
 
   bindGetUserInfo: function(e) {
+    console.log('完成授权选择')
     if (e.detail.userInfo) {//用户按了允许授权按钮
       var that = this;
       // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
+      console.log("授权成功，用户的信息如下：");
       console.log(e.detail.userInfo);
+      app.globalData.userInfo = e.detail.userInfo
+      app.globalData.id = e.detail.userInfo.nickName
+      app.globalData.gender = e.detail.userInfo.gender
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({
         isHide: false
       });
-      // wx.switchTab({
-      //   url: '/pages/index/index',
-      // })
+      console.log('跳转到主页')
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
     } 
     else {//用户按了拒绝按钮
       wx.showModal({

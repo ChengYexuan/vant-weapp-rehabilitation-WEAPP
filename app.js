@@ -29,7 +29,8 @@ App({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          // 之前已经使用过该小程序并授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          // 之前已经使用过该小程序并授权，可以直接调用 getUserInfo 不会弹框
+          console.log('之前已经使用过该小程序并授权，app.js有权限获取用户信息')
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
@@ -44,15 +45,20 @@ App({
             }
           })
         }
+        else{
+          console.log('app.js没有权限获取用户信息')
+        }
       }
     })
+
   },
   globalData: {
     userInfo: null,
     id: null,
     gender: null,
-    ipstr: null,
-    index: 0, //动作序号
+    ipstr: "http://47.114.156.165:12306/",
+    serialNo: null,
+    index: null, //动作序号
     progressTime: null //动作进度
   }
 })

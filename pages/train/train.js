@@ -1,5 +1,4 @@
 // pages/train/train.js
-
 import wxCharts from '../../utils/wxcharts.js'
 var ringChart = null
 var radarChart = null
@@ -9,10 +8,10 @@ const app = getApp()
 
 Page({
   data: {
-    planID: 1,
+    planID: null,
     planName: '',
-    finished: 0,
-    unfinished: 0,
+    finished: 50,
+    unfinished: 30,
     mission: '',
     step: [], //训练计划步骤
     active: 0, //当前步骤
@@ -20,12 +19,68 @@ Page({
     list: [], //方案中的动作
   },
 
-  onLoad: function (options) {},
+  /**
+   * 加载页面时--拉取后端数据、更新全局变量、更新绑定数据
+   */
+  onLoad: function () {
+    // var date = new Date()
+    wx.request( {
+      url: app.globalData.ipstr + "/plan/today",
+      data:{
+        userID: app.globalData.id,
+        date: "2021/01/18"
+      },
+      success: res => {
+        console.log('request seccess!')
+        console.log(res)
+        if(res.data.newUser){
+          wx.navigateTo({
+            url: '../new/new'
+          })
+        }
+        else{
+          this.setData({
+            planID: res.data.data.planID,
+            active: res.data.data.actionNum,
+            sec: res.data.data.actionSec
+          })
+          console.log('更新用户数据')
+          console.log(this.data)
+          app.globalData.progressTime = res.data.data.actionSec
+          app.globalData.index = res.data.data.actionNum
+          app.globalData.serialNo = res.data.data.planID
+          console.log('更新数据后进行页面数据更新')
+          var planName = document[this.data.planID].title
+          var mission = document[this.data.planID].mission
+          var step = document[this.data.planID].exer
+          var list = []
+          const exerDoc = docu.compose(planName)[0]
+          for(let i=0; i<exerDoc.length; i++){
+            list.push({
+              title: exerDoc[i].title,
+              desc: exerDoc[i].time,
+              thumb: '',
+              num: exerDoc[i].set,
+            })
+          }
+          this.setData({
+            planName: planName,
+            mission: mission,
+            step: step,
+            active: app.globalData.index,
+            list: list
+          })
+        }
+      }
+    })
+  },
  
   onReady: function () {},
 
+  /**
+   * 显示页面时--画图
+   */
   onShow: function () {
-
     // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
     // 不然会发生 tabbar 中 selected 与实际上的 index 不同的情况
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -33,62 +88,7 @@ Page({
         selected: 2
       })
     }
-
-    // 拉取后端数据
-    // wx.request( {
-    //   url: ipstr + "/plan/history",
-    //   data:{
-    //     userID: app.globalData.id,
-    //     data: '2020/01/18'
-    //   },
-    //   success: res => {
-    //     if(res.data.newUser){
-    //       wx.navigateTo({
-    //         url: '../new/new'
-    //       })
-    //     }
-    //     else{
-    //       this.setData({
-    //         planID: res.data.planID,
-    //         active: res.data.actionNum,
-    //         sec: res.data.actionSec
-    //       })
-    //       app.globalData.progressTime = res.data.actionSec
-    //       app.globalData.index = res.data.actionNum
-    //     }
-    //   }
-    // })
-          
-    app.globalData.progressTime = 325
-    app.globalData.index = 4
-    var planName = document[this.data.planID].title
-    var finished = 50 //api
-    var unfinished = 30 //api
-    var percent = finished/(finished+unfinished)*100
-    var week = [9, 10, 15, 9, 8, 12, 3] //api
-    var mission = document[this.data.planID].mission
-    var step = document[this.data.planID].exer
-    var list = []
-    const exerDoc = docu.compose(planName)[0]
-    for(let i=0; i<exerDoc.length; i++){
-      list.push({
-        title: exerDoc[i].title,
-        desc: exerDoc[i].time,
-        thumb: '',
-        num: exerDoc[i].set,
-      })
-    }
-
-    this.setData({
-      planName: planName,
-      mission: mission,
-      finished: finished,
-      unfinished: unfinished,
-      step: step,
-      active: app.globalData.index,
-      list: list
-    })
-
+    
     // 获取窗口宽度
     var windowWidth = 0;
     // try {
@@ -97,6 +97,11 @@ Page({
     // } catch (e) {
     //   console.error('getSystemInfoSync failed!');
     // }
+
+    var percent = 62.5
+    var finished = 50
+    var unfinished = 30
+    var week = [9, 10, 15, 9, 8, 12, 3]
 
     // 雷达图
     radarChart = new wxCharts({

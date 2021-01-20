@@ -30,7 +30,6 @@ Page({
       list.push(exerDoc[i].title)
     }
     var flag = options.exer.charAt(options.exer.length-1)
-    console.log(flag)
     if(!parseInt(flag)){
       var name = options.exer.substr(0, options.exer.length-1)
       this.setData({

@@ -53,6 +53,6 @@
     <view style="padding-left: 1pc; padding-right: 1pc" class="h2">示例</view>
   </van-row>
   <navigator url="./video" hover-class="navigator-hover">
-    <image src="../../icon/head.png" mode="aspectFit" style="height: 300rpx"></image>
+    <image src="{{imgURL}}" mode="aspectFit" style="height: 300rpx"></image>
   </navigator> 
 </view>

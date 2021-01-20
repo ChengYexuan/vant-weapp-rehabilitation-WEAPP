@@ -3,18 +3,20 @@
 
 Page({
   data: {
-    columns: ['计划1', '计划2', '计划3', '计划4', '计划5'],
-    result: ['a', 'b'],
-    result:false,
-    illness:['i1','i2','i3','i4','i5','i6'],
+    age: null,
+    sex: ['a', 'b'],
+    sex:false,
+    
+    illness:['i1','i2','i3','i4','i5','i6','i7'],
     illness:false,
     illtime:['time1','time2','time3'],
     illtime:false,
     exercise:['ex1','ex2','ex3'],
     exercise:false,
     value: '',
+    
   },
-
+  
   onChange_num(event) {
     // event.detail 为当前输入的值
     console.log(event.detail);
@@ -22,7 +24,7 @@ Page({
 
   onChange(event) {
     this.setData({
-      result: event.detail,
+      sex: event.detail,
     });
   },
 
@@ -41,6 +43,40 @@ Page({
   onChange_ex(event) {
     this.setData({
       exercise: event.detail,
+    });
+  },
+
+
+  // 事件处理函数
+  onConfirm:function() {
+    // wx.request({
+    //   url : app.globalData.ipstar + "/plan/new",
+    //   method: "POST",
+    //   header: {
+    //     "content-type": "application/x-www-form-urlencoded" 
+    //   },
+    //   data: {
+    //     result : JSON.stringify(this.data.result)
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     wx.switchTab({
+    //       url: '../train/train',
+    //     })
+    //     wx.showToast({
+    //       title: '创建成功！',
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+
+    // }),
+    
+  },
+
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail,
     });
   },
 

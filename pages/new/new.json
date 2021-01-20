@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+ 
     "van-picker": "@vant/weapp/picker/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",

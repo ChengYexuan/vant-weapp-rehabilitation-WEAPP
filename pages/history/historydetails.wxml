@@ -4,52 +4,19 @@
   <text class="h1">日期：{{ time }}</text>
   <text class="h1">\n</text>
   <text class="h1">\n</text>
-  <text class="h1">今日方案详情：</text>
+  <text class="h1">今日方案：{{planName}}</text>
   <text class="h1">\n</text>
   <text class="h1">\n</text>
 </view>
 
 <view class="box">
-  <van-collapse
-    value="{{ activeNames }}"
-    bind:change="onChange"
-    bind:open="onOpen"
-    bind:close="onClose"
-  >
-    <van-collapse-item name="1"><view slot="title"><text class="h3">方案一：颈部慢性疼痛缓解训练计划</text></view>
-      <van-row>
-        <van-col offset="2">
-          <text class="h4">1. 麦肯基坐式头部回缩运动</text>
-          <text class="h4">\n</text>
-          <text class="h4">2. 麦肯基坐式头部回缩运动进阶</text>
-          <text class="h4">\n</text>
-          <text class="h4">3. 麦肯基平躺头部回缩运动</text>
-        </van-col>
-      </van-row>
-    </van-collapse-item>
-    <van-collapse-item name="2"><view slot="title"><text class="h3">方案二：暂无</text></view>
-      <van-row>
-        <van-col offset="2">
-          <text class="h4">暂无</text>
-          <text class="h4">\n</text>
-        </van-col>
-      </van-row>
-    </van-collapse-item>
-    <van-collapse-item name="3"><view slot="title"><text class="h3">方案三：暂无</text></view>
-      <van-row>
-        <van-col offset="2">
-          <text class="h4">暂无</text>
-          <text class="h4">\n</text>
-        </van-col>
-      </van-row>
-    </van-collapse-item>
-    <van-collapse-item name="4"><view slot="title"><text class="h3">方案四：暂无</text></view>
-      <van-row>
-        <van-col offset="2">
-          <text class="h4">暂无</text>
-          <text class="h4">\n</text>
-        </van-col>
-      </van-row>
-    </van-collapse-item>
-  </van-collapse>
+  <van-cell
+    class="h3"
+    is-link
+    wx:for="{{list}}" 
+    wx:key="index"
+    data-index="{{index}}"
+    title="{{item.step}}：{{item.title}}"
+    bindtap="exerDetail"
+  />
 </view>

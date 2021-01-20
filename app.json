@@ -7,11 +7,8 @@
     "pages/me/me",
     "pages/new/new",
     "pages/history/history",
-<<<<<<< HEAD
     "pages/train/start",
     "pages/train/video",
-=======
->>>>>>> 16af24bae9d1b6fc9509dbc321cbab4bfe3d7bbc
     "pages/history/historydetails"
   ],
   "window": {

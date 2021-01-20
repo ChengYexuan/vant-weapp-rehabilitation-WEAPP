@@ -18,15 +18,6 @@
       <view class="h3">
         <van-cell-group>
           <van-field
-<<<<<<< HEAD
-            wx:for="{{detailList}}" 
-            wx:key="index"
-            required
-            clearable
-            label="{{item.text}}"
-            placeholder="{{item.current}}"
-            bind:change="onChange"
-=======
             value="{{ age }}"
             required
             clearable
@@ -64,7 +55,6 @@
             clearable
             label="手机号"
             placeholder="请输入手机号"
->>>>>>> 16af24bae9d1b6fc9509dbc321cbab4bfe3d7bbc
           />
         </van-cell-group>
       </view>

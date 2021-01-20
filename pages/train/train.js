@@ -23,16 +23,26 @@ Page({
    * 加载页面时--拉取后端数据、更新全局变量、更新绑定数据
    */
   onLoad: function () {
-    // var date = new Date()
+    var date = new Date();
+    var nowMonth = date.getMonth() + 1;
+    var strDate = date.getDate();
+    var seperator = "/";
+    // 对月份进行处理，1-9月在前面添加一个“0”
+    if (nowMonth >= 1 && nowMonth <= 9) {
+      nowMonth = "0" + nowMonth;
+    }
+    // 对日进行处理，1-9号在前面添加一个“0”
+    if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+    }
     wx.request( {
       url: app.globalData.ipstr + "/plan/today",
       data:{
         userID: app.globalData.id,
-        date: "2021/01/18"
+        date: date.getFullYear() + seperator + nowMonth + seperator + strDate
       },
       success: res => {
-        console.log('request seccess!')
-        console.log(res)
+        console.log(res.data)
         if(res.data.newUser){
           wx.navigateTo({
             url: '../new/new'
@@ -44,12 +54,9 @@ Page({
             active: res.data.data.actionNum,
             sec: res.data.data.actionSec
           })
-          console.log('更新用户数据')
-          console.log(this.data)
           app.globalData.progressTime = res.data.data.actionSec
           app.globalData.index = res.data.data.actionNum
           app.globalData.serialNo = res.data.data.planID
-          console.log('更新数据后进行页面数据更新')
           var planName = document[this.data.planID].title
           var mission = document[this.data.planID].mission
           var step = document[this.data.planID].exer

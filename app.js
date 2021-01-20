@@ -7,30 +7,12 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //     // if (res.code) {
-    //     //   //发起网络请求
-    //     //   wx.request({
-    //     //     url: 'https://test.com/onLogin',
-    //     //     data: {
-    //     //       code: res.code
-    //     //     }
-    //     //   })
-    //     // } else {
-    //     //   console.log('登录失败！' + res.errMsg)
-    //     // }
-    //   }
-    // })
-
     // 获取用户授权列表
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 之前已经使用过该小程序并授权，可以直接调用 getUserInfo 不会弹框
-          console.log('之前已经使用过该小程序并授权，app.js有权限获取用户信息')
+          console.log('之前已经使用过该小程序并授权和注册，app.js有权限获取用户信息并更新全局变量。')
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
@@ -46,7 +28,7 @@ App({
           })
         }
         else{
-          console.log('app.js没有权限获取用户信息')
+          console.log('app.js没有权限获取用户信息，全局变量无法更新！')
         }
       }
     })
@@ -54,9 +36,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    id: "wdyabcd",
+    id: "",
     gender: null,
-    ipstr: "http://47.114.156.165:12306/",
+    ipstr: "http://47.114.156.165:12306",
     serialNo: null,
     index: null, //动作序号
     progressTime: null //动作进度

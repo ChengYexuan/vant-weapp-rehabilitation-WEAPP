@@ -18,8 +18,10 @@ Page({
     btn3ImgUrl: app.globalData.ipstr+"images/myPlanIcon3.png",
   },
 
+  /**
+   * 页面加载时--拉取后端用户信息
+   */
   onLoad: function() {
-    console.log("userID:"+app.globalData.id)
     var that = this;
     wx.request({
       url: app.globalData.ipstr+"/user/info",
@@ -32,7 +34,6 @@ Page({
         'content-type':'application/json'
       },
       success:function(res){
-        console.log("request ok");
         console.log(res.data);
         that.setData({
           weight:res.data.data.weight,

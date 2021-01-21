@@ -11,8 +11,11 @@
   height: 100%;
   width: 100%;
   align-items: flex-end;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
   background-color: white;
 }
+
 .sex{
   height: 100%;
   width: 100%;

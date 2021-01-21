@@ -17,9 +17,6 @@
       </van-col>
     </van-row>
   </view>
-</view>
-
-<view class="box">
   <view class="age">
     <text class="datetop">\n</text>
     
@@ -39,8 +36,9 @@
   </view>
 </view>
 
-
 <view class="box">
+  <text class="datetop">\n</text>
+  <view class ="t2">评估选项</view>
   <text class="datetop">\n</text>
   <view class = "theexercise">
     <van-row>
@@ -57,11 +55,6 @@
       </van-col>
     </van-row>
   </view>
-</view>
-
-<view class="box">
-  <view class ="t2">评估选项</view>
-  <text class="datetop">\n</text>
   <view class = "eval">
     <van-row >
       <van-col span="10" offset="0"><text class ="h2">疾病详情：</text></van-col>
@@ -88,8 +81,6 @@
   <view class = "line">
     <text>\n</text>
   </view>
-</view>
-<view class="box">
   <view class = "theilltime">
     <van-row>
       <van-col span="10" offset="2"><text class ="h2">损伤分期：</text></van-col>
@@ -122,3 +113,4 @@
     <text class="datetop">\n</text>
   </view>
 </view>
+

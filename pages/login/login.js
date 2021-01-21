@@ -87,8 +87,8 @@ Page({
         url: app.globalData.ipstr+"/user/new",
         method:'POST',
         data:{
-          // userID:e.detail.userInfo.nickName,
-          userID:'cyx',
+          userID:e.detail.userInfo.nickName,
+          //userID:'cyx',
           sex:e.detail.userInfo.gender,
         },
         header:{

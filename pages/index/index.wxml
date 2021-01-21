@@ -7,7 +7,7 @@
   </swiper>
 
   <view class="scroll">
-    <view class="scrollText">今日已完成训练</view>
+    <view class="scrollText">普及科学防病知识，养成良好生活习惯</view>
   </view>
 
   <view class="workbench">

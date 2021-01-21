@@ -22,6 +22,19 @@ Page({
    * 页面加载时--拉取后端用户信息
    */
   onLoad: function() {
+    
+  },
+
+  onShow: function () {
+    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
+    // 不然会发生tabbar中selected与实际上的index不同
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+
     var that = this;
     wx.request({
       url: app.globalData.ipstr+"/user/info",
@@ -42,17 +55,6 @@ Page({
         })
       }
     });
-  },
-
-  onShow: function () {
-    // 每个 tab 页下的自定义 tabBar 组件实例是不同的，可通过自定义组件下的 getTabBar 接口，获取当前页面的自定义 tabBar 组件实例。
-    // 不然会发生tabbar中selected与实际上的index不同
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      })
-    }
   },
 
   toPageNew:function(){

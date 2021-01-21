@@ -88,18 +88,45 @@ Page({
       success: res => {
         console.log(res.data),
         this.setData({
-          currentAge: res.data.data.age,
-          currentSexIndex: res.data.data.sex,
-          currentHeight: res.data.data.height,
-          currentWeight: res.data.data.weight,
-          currentPhoneNum: res.data.data.phoneNum
+          age: res.data.data.age,
+          sexIndex: res.data.data.sex,
+          height: res.data.data.height,
+          weight: res.data.data.weight,
+          phoneNum: res.data.data.phoneNum
+        })
+        if (this.data.age != null) {
+          this.setData({
+            currentAge: this.data.age
+          })
+        }
+        if (this.data.sexIndex != null) {
+          this.setData({
+            currentSexIndex: this.data.sexIndex
+          })
+        }
+        if (this.data.height != null) {
+          this.setData({
+            currentHeight: this.data.height
+          })
+        }
+        if (this.data.weight != null) {
+          this.setData({
+            currentWeight: this.data.weight
+          })
+        }
+        if (this.data.phoneNum != null) {
+          this.setData({
+            currentPhoneNum: this.data.phoneNum
+          })
+        }
+        const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
+        this.setData({
+          currentSex: sexDict[this.data.currentSexIndex].sex
         })
       }
     })
-    const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
-    this.setData({
-      currentSex: sexDict[this.data.currentSexIndex].sex
-    })
+
+    
   },
 
   /**

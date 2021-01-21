@@ -133,13 +133,19 @@ Page({
     var time = new Date(event.detail)
     var year = time.getFullYear();  // 获取完整的年份(4位,1970)
     var month = time.getMonth() + 1;  // 获取月份(0-11,0代表1月)
+    //对月份进行处理，1-9月在前面添加一个“0”
+    if (month >= 1 && month <= 9) {
+      month = "0" + month;
+    }
     var day = time.getDate();  // 获取日(1-31)
+    if (day >= 0 && day <= 9) {
+      day = "0" + day;
+    }
     var seperator = "/";
     this.setData({
       newDateOfBirth: year + seperator + month + seperator + day
     })
     this.setData({ show: false })
-    console.log(this.data.newDateOfBirth);
   },
 
   onChangeSex(event) {
@@ -172,7 +178,7 @@ Page({
   },
 
   onChangePhoneNum(event) {
-    console.log(event.detail);
+    // console.log(event.detail);
     this.setData({
       newPhoneNum: event.detail
     })
@@ -180,6 +186,7 @@ Page({
   },
 
   onClick() {
+    console.log(this.data.newDateOfBirth);
     wx.request({
       url: app.globalData.ipstr + '/user/info',
       method: "POST",

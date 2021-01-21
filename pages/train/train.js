@@ -1,10 +1,12 @@
 // pages/train/train.js
+const app = getApp()
+
 import wxCharts from '../../utils/wxcharts.js'
 var ringChart = null
 var radarChart = null
-const docu = require('../../static/docu.js')
-const document = docu.plan
-const app = getApp()
+
+const Doc = require('../../static/docu.js')
+const document = Doc.planDoc
 
 Page({
   data: {
@@ -17,24 +19,28 @@ Page({
     active: 0, //当前步骤
     sec: 0, //当前步骤的进度时间
     list: [], //方案中的动作
+    flag: 0, //新老用户标识
   },
 
   /**
    * 加载页面时--拉取后端数据、更新全局变量、更新绑定数据
    */
   onLoad: function () {
+    //获取今日日期并格式化
     var date = new Date();
     var nowMonth = date.getMonth() + 1;
     var strDate = date.getDate();
     var seperator = "/";
-    // 对月份进行处理，1-9月在前面添加一个“0”
+    //对月份进行处理，1-9月在前面添加一个“0”
     if (nowMonth >= 1 && nowMonth <= 9) {
       nowMonth = "0" + nowMonth;
     }
-    // 对日进行处理，1-9号在前面添加一个“0”
+    //对日进行处理，1-9号在前面添加一个“0”
     if (strDate >= 0 && strDate <= 9) {
       strDate = "0" + strDate;
     }
+
+    //查询今日是否有训练记录，共三种情况
     wx.request( {
       url: app.globalData.ipstr + "/plan/today",
       data:{
@@ -42,32 +48,38 @@ Page({
         date: date.getFullYear() + seperator + nowMonth + seperator + strDate
       },
       success: res => {
-        console.log(res.data)
-        if(res.data.newUser){
-          wx.navigateTo({
-            url: '../new/new'
+        // console.log(res.data)
+        // 判断是否是新用户
+        if(res.data.data.newUser){
+          // if(1){
+          this.setData({
+            flag: 1
           })
         }
         else{
           this.setData({
+            // planID: 0, //第1个方案
             planID: res.data.data.planID,
-            active: res.data.data.actionNum,
+            active: res.data.data.actionNum+1,
+            // sec: 30, //第60秒
             sec: res.data.data.actionSec
           })
-          app.globalData.progressTime = res.data.data.actionSec
+          app.globalData.progressTime = this.data.sec
           app.globalData.index = res.data.data.actionNum
-          app.globalData.serialNo = res.data.data.planID
+          app.globalData.serialNo = this.data.planID
+          //获取No.planID方案的文档
           var planName = document[this.data.planID].title
           var mission = document[this.data.planID].mission
           var step = document[this.data.planID].exer
           var list = []
-          const exerDoc = docu.compose(planName)[0]
-          for(let i=0; i<exerDoc.length; i++){
+          //获取动作组合
+          const exer = Doc.composeExer(planName)[0] //返回Array只有一个元素，该元素内有五个对象
+          for(let i=0; i<exer.length; i++){
             list.push({
-              title: exerDoc[i].title,
-              desc: exerDoc[i].time,
-              thumb: '',
-              num: exerDoc[i].set,
+              title: exer[i].title,
+              desc: exer[i].time,
+              thumb: exer[i].url,
+              num: exer[i].set,
             })
           }
           this.setData({
@@ -82,8 +94,6 @@ Page({
     })
   },
  
-  onReady: function () {},
-
   /**
    * 显示页面时--画图
    */
@@ -177,33 +187,24 @@ Page({
     }, 500);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数
-   */
   seePlan: function (e) {
     let index = e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: './start?exer=' + this.data.list[index].title + 0,
+      url: './start?obj=' + JSON.stringify({
+        exerName: this.data.list[index].title,
+        flag: false,
+        index: index
+      })
     })
   },
 
-  startPlan: function (e) {
+  startPlan: function () {
     wx.navigateTo({
-      url: './start?exer=' + this.data.list[this.data.active].title + 1,
+      url: './start?obj=' + JSON.stringify({
+        exerName: this.data.list[this.data.active].title,
+        flag: true,
+        index: this.data.active
+      })
     })
   }
 })

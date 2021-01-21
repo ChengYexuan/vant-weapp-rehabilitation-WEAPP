@@ -5,3 +5,11 @@
   width: 200rpx;
   margin: 0 auto;
 }
+
+.h1{
+  font-size: larger;
+  font-weight: 700;
+  display: flex;
+  justify-content:center;
+  padding: 10rpx
+}

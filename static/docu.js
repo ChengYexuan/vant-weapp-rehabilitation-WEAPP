@@ -1,6 +1,7 @@
-const exercise = require("./exer")
+const Exer = require('./exer')
+const exercise = Exer.exerDoc
 
-var plan = [
+var document = [
   {
     'title': '颈部慢性疼痛缓解方案',
     'mission': '缓解长期错误姿势造成的颈部压力，舒缓肌肉，减少疼痛',
@@ -27,28 +28,29 @@ var plan = [
   },
 ]
 
-module.exports.plan = plan
-module.exports.compose = function(name) {
-  const exercise = require('./exer')
-  var list = []
-  for(let i=0; i<plan.length; i++){
-    list.push(plan[i].title)
-  }
-  var index = list.indexOf(name)
-  var exer = []
+module.exports.planDoc = document
+module.exports.composeExer = function(name) {
+  //计划名称列表，如['颈部慢性疼痛缓解方案', ...]
+  var list = document.map(a => a.title)
+  // var list = []
+  // for(let i=0; i<document.length; i++){
+  //   list.push(document[i].title)
+  // }
+  var index = list.indexOf(name) //如果计划内容是写死的，则根据索引就可以生成计划内容
+  var exer = [] //计划内容
   switch(index)
   {
-    case 1:
+    case 0:
       exer.push(exercise.slice(0, 5))
+      break
+    case 1:
+      exer.push(exercise.slice(5, 10))
       break
     case 2:
       exer.push(exercise.slice(5, 10))
       break
     case 3:
-      exer.push(exercise.slice(5, 10))
-      break
-    case 4:
-      exer.push(exercise.slice(-1, -5))
+      exer.push(exercise.slice(10, 15))
       break
   }
   return exer

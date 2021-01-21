@@ -1,6 +1,13 @@
 <!--pages/train/video.wxml-->
-<video id="v" style="width: 100%;height=400px;margin:1px;" src="{{videoURL}}" controls="true" enable-progress-gesture="true" show-mute-btn="true" bindtimeupdate="currentTime"></video>
-<van-circle class="prog" stroke-width="6" value="{{ percent }}" color="{{ gradientColor }}" text="完成进度" />
+<view class="h1">{{title}}</view>
+<video id="v" style="width: 100%;height=400px;margin:1px;" 
+  src="{{videoURL}}"
+  controls="true"
+  enable-progress-gesture="true"
+  autoplay="true"
+  show-mute-btn="true"
+  bindtimeupdate="currentTime"></video>
+<van-circle wx:if="{{flag}}" class="prog" stroke-width="6" value="{{ percent }}" color="{{ gradientColor }}" text="完成进度" />
 <van-dialog
   use-slot
   title="{{text}}"

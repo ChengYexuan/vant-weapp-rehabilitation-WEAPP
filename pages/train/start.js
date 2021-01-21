@@ -1,20 +1,16 @@
 // pages/train/start.js
-
-const exerDoc = require('../../static/exer.js')
+const app = getApp()
+const Exer = require('../../static/exer.js')
+const exerDoc = Exer.exerDoc
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    flag: false,
+    flag: false, //按钮是否出现
     imgURL:"",
-    exer:'',
-    list:[],
-    n: 0,
-    sec: 0,
-    order: 0,
+    exer:'', //动作名称
+    n: 0, //动作次数
+    sec: 0, //每个动作时间
+    order: 0, //在方案中的序号+1
     start: '',
     process: '',
     note: '',
@@ -25,31 +21,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var list = []
-    for (let i = 0; i < exerDoc.length; i++) {
-      list.push(exerDoc[i].title)
-    }
-    var flag = options.exer.charAt(options.exer.length-1)
-    if(!parseInt(flag)){
-      var name = options.exer.substr(0, options.exer.length-1)
-      this.setData({
-        flag: false
-      })
-    }
-    else{
-      var name = options.exer.substr(0, options.exer.length-1)
-      this.setData({
-        flag: true
-      })
-    }
-    var index = list.indexOf(name)
+    //解析参数
+    let params = JSON.parse(options.obj)
+    var flag = params.flag
+    var name = params.exerName
+    var order = params.index
+    //根据动作名称找到动作内容
+    var index = Exer.indexOf(name)
     var subs = exerDoc[index].time.split('：')[1].split(' ')[0]
+    var n = exerDoc[index].set.split('：')[1]
+    var sec = subs.substring(0, subs.length-1)
     this.setData({
+      flag: flag,
       exer: name,
-      list: list,
-      n: exerDoc[index].set.split('：')[1],
-      sec: subs.substring(0, subs.length-1),
-      order: index + 1,
+      n: n,
+      sec: sec,
+      order: order + 1,
       start: exerDoc[index].start,
       muscle: exerDoc[index].muscle,
       note: exerDoc[index].note,
@@ -59,39 +46,15 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数
+   * 开始训练--传参至video：动作名称&flag
    */
   start: function () {
     wx.navigateTo({
-      url: './video',
+      url: './video?obj=' + JSON.stringify({
+        order: this.data.order,
+        flag: this.data.flag,
+        title: this.data.exer
+      }),
     })
   }
 })

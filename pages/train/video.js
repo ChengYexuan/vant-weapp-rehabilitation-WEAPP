@@ -1,39 +1,37 @@
 // pages/train/video.js
 import Dialog from '@vant/weapp/dialog/dialog';
-const exerDoc = require('../../static/exer.js')
+const Exer = require('../../static/exer.js')
+const exerDoc = Exer.exerDoc
 const app = getApp()
 
 Page({
   data: {
     videoURL: '',
+    title: '', //动作名称
+    flag: false, //是否需要自动定位
     record: 0, //记录播放进度
     percent: 0,
-    text: '', //提示信息： 恭喜你完成训练！ 或者  开始下一步吧！
+    text: '', //提示信息
     gradientColor: {
       '0%': '#ffd01e',
       '100%': '#ee0a24',
     },
-    show: false,
+    show: false, //是否弹出对话框
     index: 0, //训练步骤
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log('参数serialNo:')
-    console.log(app.globalData.serialNo)
-    console.log('参数actionNum:')
-    console.log(this.data.index)
-    console.log('参数actionSec:')
-    console.log(this.data.record)
+  onLoad: function (options) {
+    let params = JSON.parse(options.obj)
+    this.setData({
+      videoURL: 'http://47.114.156.165:12306/videos/P' + app.globalData.serialNo + '/' + app.globalData.serialNo+ '-' + params.order  + '.mp4',
+      flag: params.flag,
+      title: params.title
+    })
   },
-
+ 
   /**
    * 页面显示时--获取全局变量、自动定位视频进度
    */
@@ -41,17 +39,12 @@ Page({
     this.setData({
       index: app.globalData.index,
       record: app.globalData.progressTime,
-      // videoURL: exerDoc[index].video
-      videoURL: 'http://47.114.156.165:12306/videos/videoSample.mp4'
     })
-    this.videoContext = wx.createVideoContext('v')
-    this.videoContext.seek(this.data.record)
+    if(this.data.flag){
+      this.videoContext = wx.createVideoContext('v')
+      this.videoContext.seek(this.data.record)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {},
 
   /**
    * 页面卸载时--上传record到后端
@@ -59,19 +52,17 @@ Page({
   onUnload: function () {
     wx.request({
       url: app.globalData.ipstr + '/plan/process',
-      method: "PUT",
+      method: "GET",
       data: {
         serialNo: app.globalData.serialNo,
         actionNum: this.data.index,
-        actionPercent: this.data.record
+        actionSec: this.data.record
       },
       success: res => {
         console.log(res)
       }
     })
     app.globalData.progressTime = this.data.record
-    console.log(this.data.index)
-    console.log(this.data.record)
   },
 
   /**
@@ -84,10 +75,10 @@ Page({
       percent: Math.floor(e.detail.currentTime/total*100)
     })
     if (e.detail.currentTime >= total) {
-      // 是异步执行么？
       this.setData({
         show: true
       })
+      console.log(this.data.index)
       if (this.data.index === 4) {
         this.setData({
           text: '恭喜你完成训练！'
@@ -99,7 +90,6 @@ Page({
         })
       }
     }
-    console.log(this.data.record)
   },
 
     /**
@@ -109,18 +99,18 @@ Page({
     this.setData({ show: false })
     wx.request({
       url: app.globalData.ipstr + '/plan/process',
-      method: "PUT",
+      method: "GET",
       data: {
         serialNo: app.globalData.serialNo,
-        actionNum: this.data.data.index,
-        actionSec: this.data.record
+        actionNum: this.data.index + 1,
+        actionSec: 0
       },
       success: res => {
         console.log(res)
       }
     })
-    app.globalData.progressTime = this.data.record
-    console.log(this.data.index)
+    app.globalData.progressTime = 0
+    app.globalData.index = app.globalData.index+1
     if (this.data.index === 4) {
       wx.switchTab({
         url: '../train/train',
@@ -128,7 +118,11 @@ Page({
     }
     else{
       wx.navigateTo({
-        url: '../train/start',
+        url: './start?obj=' + JSON.stringify({
+          exerName: exerDoc[Exer.indexOf(this.data.title)+1].title,
+          flag: true,
+          index: this.data.index + 1 //下一步动作的序号
+        })
       })
     }
   },

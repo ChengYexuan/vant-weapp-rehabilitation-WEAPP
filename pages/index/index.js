@@ -34,7 +34,7 @@ Page({
         'content-type':'application/json'
       },
       success:function(res){
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({
           weight:res.data.data.weight,
           height:res.data.data.height,

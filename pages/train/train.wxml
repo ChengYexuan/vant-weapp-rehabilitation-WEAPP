@@ -1,32 +1,41 @@
 <!--pages/train/train.wxml-->
-
-<view class="h1 van-hairline--bottom" style="padding: 10rpx">{{planName}}</view>
-
-<view class="canvas">
-   <van-col offset="1" span="13"><view class="h2">今日完成情况</view></van-col>
-  <van-col span="10"><view class="h2">历史完成情况</view></van-col>
-  <canvas canvas-id="ringCanvas" class="ring"></canvas>
-  <view class="legend">
-    <van-tag color='#99CD2C'>已完成</van-tag>
-    <view style="margin-bottom: 70rpx">{{finished}}min</view>
-    <van-tag color='#E2460E'>未完成</van-tag>
-    <view>{{unfinished}}min</view>
-  </view>
-  <canvas canvas-id="radarCanvas" class="radar"></canvas>
-</view>
-
-<view class="box">
-  <view class="h2">主要任务</view>
-  <view class="text">{{mission}}</view>
-  <van-steps steps="{{step}}" active="{{active}}" active-icon="success" active-color="#6ED2FF"/>
-</view>
-
-<view class="box">
-  <van-card wx:for="{{list}}" wx:key="index" data-index='{{index}}' num="{{item.num}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" bindtap="seePlan">
-    <view slot='price-top'>
-      <van-button size="small" type="primary" color="#6ED2FF">查看详情</van-button>
+<view wx:if="{{!flag}}">
+  <view class="h1 van-hairline--bottom">{{planName}}</view>
+  <view class="canvas">
+    <van-col offset="1" span="13"><view class="h2">今日完成情况</view></van-col>
+    <van-col span="10"><view class="h2">历史完成情况</view></van-col>
+    <canvas canvas-id="ringCanvas" class="ring"></canvas>
+    <view class="legend">
+      <van-tag color='#99CD2C'>已完成</van-tag>
+      <view style="margin-bottom: 70rpx">{{finished}}min</view>
+      <van-tag color='#E2460E'>未完成</van-tag>
+      <view>{{unfinished}}min</view>
     </view>
-  </van-card>
+    <canvas canvas-id="radarCanvas" class="radar"></canvas>
+  </view>
+  <view class="box">
+    <view class="h2">主要任务</view>
+    <view class="text">{{mission}}</view>
+    <van-steps steps="{{step}}" active="{{active}}" active-icon="success" active-color="#6ED2FF"/>
+  </view>
+  <view class="box">
+    <van-card wx:for="{{list}}" wx:key="index" data-index='{{index}}' num="{{item.num}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" bindtap="seePlan">
+      <view slot='price-top'>
+        <van-button size="small" type="primary" color="#6ED2FF">查看详情</van-button>
+      </view>
+    </van-card>
+  </view>
+  <van-button style="padding-bottom: 120rpx"size="large" type="primary" color="#6ED2FF" bindtap="startPlan">开始训练</van-button>
 </view>
 
-<van-button style="padding-bottom: 120rpx"size="large" type="primary" color="#6ED2FF" bindtap="startPlan">开始训练</van-button>
+<view wx:else>
+  <view class="box">
+    <image src="https://cdn.cloudflare.steamstatic.com/steam/apps/1071050/capsule_616x353.jpg?t=1556079845" mode="aspectFit"></image>
+    <view class="h1">我的方案里空空如也~~</view>
+    <text>\n</text>
+    <image src="https://images-prod.healthline.com/hlcmsresource/images/topic_centers/7693-neck-tension-causes-symptoms-treatmentsseated-neck-stretch-1296x400-body.jpg" mode="widthFix"></image>
+  </view>
+  <navigator url="../new/new" open-type="switchTab">
+    <van-button style="padding-bottom: 120rpx" type="primary" size="large" color="#6ED2FF">新建我的第一个方案！</van-button>
+  </navigator>
+</view>

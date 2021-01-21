@@ -8,7 +8,7 @@
     <van-row>
       <van-col span="6" offset="0">
         <text class ="h2">性别：</text></van-col>
-      <van-col span="10" offset="4">
+      <van-col span="10" offset="6">
         <van-checkbox-group value="{{ sex }}" bind:change="onChange" max="{{ 1 }}">
           <van-checkbox name="a">男</van-checkbox>
           <text class="datetop">\n</text>
@@ -46,12 +46,13 @@
     <van-row>
       <van-col span="10" offset="0"><text class ="h2">运动强度：</text></van-col>
       <van-col span="10" offset="2">
-        <van-checkbox-group value="{{ exercise }}" bind:change="onChange_ex" max="{{ 1 }}">
-          <van-checkbox name="ex1">低缓</van-checkbox>
+      
+        <van-checkbox-group value="{{ intensity }}" bind:change="onChange_ex" max="{{ 1 }}">
+          <van-checkbox name="0">低缓</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="ex2">中度</van-checkbox>
+          <van-checkbox name="1">中度</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="ex3">强烈</van-checkbox>
+          <van-checkbox name="2">强烈</van-checkbox>
           <text class="datetop">\n</text>
         </van-checkbox-group>
       </van-col>
@@ -66,20 +67,20 @@
     <van-row >
       <van-col span="10" offset="0"><text class ="h2">疾病详情：</text></van-col>
       <van-col span="12" offset="2">
-        <van-checkbox-group value="{{ illness }}" bind:change="onChange_ill" max="{{ 1 }}">
-          <van-checkbox name="i1">颈椎韧带损伤</van-checkbox>
+        <van-checkbox-group value="{{ site }}" bind:change="onChange_ill" max="{{ 1 }}">
+          <van-checkbox bind:change="changesite0" name="0">颈椎韧带损伤</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i2">颈部肌肉痉挛</van-checkbox>
+          <van-checkbox name="1">颈部肌肉痉挛</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i3">神经根型颈椎病</van-checkbox>
+          <van-checkbox name="2">神经根型颈椎病</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i4">颈型颈椎病</van-checkbox>
+          <van-checkbox name="3">颈型颈椎病</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i5">颈椎椎管狭窄症</van-checkbox>
+          <van-checkbox name="4">颈椎椎管狭窄症</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i6">颈部外伤</van-checkbox>
+          <van-checkbox name="5">颈部外伤</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="i7">慢性疼痛</van-checkbox>
+          <van-checkbox name="6">慢性疼痛</van-checkbox>
           <text class="datetop">\n</text>
         </van-checkbox-group>
       </van-col>
@@ -92,14 +93,15 @@
 <view class="box">
   <view class = "theilltime">
     <van-row>
-      <van-col span="10" offset="2"><text class ="h2">损伤分期：</text></van-col>
+      <van-col span="10" offset="0"><text class ="h2">损伤分期：</text></van-col>
       <van-col span="10" offset="2">
-        <van-checkbox-group value="{{ illtime }}" bind:change="onChange_time" max="{{ 1 }}">
-          <van-checkbox name="time1">急性期</van-checkbox>
+      
+        <van-checkbox-group value="{{ stage }}" bind:change="onChange_time" max="{{ 1 }}">
+          <van-checkbox name="0">急性期</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="time2">慢性期</van-checkbox>
+          <van-checkbox name="1">慢性期</van-checkbox>
           <text class="datetop">\n</text>
-          <van-checkbox name="time3">恢复期</van-checkbox>
+          <van-checkbox name="2">恢复期</van-checkbox>
           <text class="datetop">\n</text>
           
         </van-checkbox-group>
@@ -109,8 +111,9 @@
       <text class="datetop">\n</text>
       <van-col span="6" offset="10">
         <!-- <navigator open-type="switchTab" url="../train/train"> -->
-          <button class="confirm" bindtap="onConfirm">
-          确认</button>
+        
+          <van-button style="padding-bottom: 120rpx"size="large" type="primary" color="#6ED2FF" bindtap="onConfirm">确认</van-button>
+
         <!-- </navigator> -->
       </van-col>
     </van-row>

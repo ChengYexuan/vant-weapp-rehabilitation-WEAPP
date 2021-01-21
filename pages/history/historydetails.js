@@ -96,8 +96,12 @@ Page({
     let index = e.currentTarget.dataset.index;
     console.log(this.data.list)
     wx.navigateTo({
-      url: '../train/start?exer=' + this.data.list[index].title,
-    })
+      url: './start?obj=' + JSON.stringify({
+        exerName: this.data.list[index].title,
+        flag: false,
+        index: index
+      })
+    })
   },
 
   /**

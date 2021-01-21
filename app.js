@@ -38,9 +38,11 @@ App({
     userInfo: null,
     id: "",
     gender: null,
-    ipstr: "http://47.114.156.165:12306",
+    ipstr: "https://www.kfxl.link:12306",
+    // ipstr: "http://47.114.156.165:12306",
     serialNo: null,
     index: null, //动作序号
-    progressTime: null //动作进度
+    progressTime: null, //动作进度
+    planID: null //方案序号
   }
 })

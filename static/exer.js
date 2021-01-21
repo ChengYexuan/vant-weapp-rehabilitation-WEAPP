@@ -8,7 +8,7 @@ var exercise = [
     'muscle': '头长肌、颈长肌',
     'time': '时长：5秒 休息：10秒',
     'set':  '次数：4',
-    'url': 'http://47.114.156.165:12306/images/1.png',
+    'url': 'https://www.kfxl.link:12306/images/1.png',
     'video': ''
   },
   {
@@ -20,7 +20,7 @@ var exercise = [
     'muscle': '头长肌、颈长肌',
     'time': '时长：5秒 休息：12秒',
     'set':  '次数：4',
-    'url': 'http://47.114.156.165:12306/images/2.png'
+    'url': 'https://www.kfxl.link:12306/images/2.png'
   },
   {
     'step': '动作三',
@@ -31,7 +31,7 @@ var exercise = [
     'muscle': '斜方肌、头夹肌、颈夹肌、头半棘肌、头最长肌、颈最长肌',
     'time': '时长：15秒 休息：5秒',
     'set':  '次数：4',
-    'url': 'http://47.114.156.165:12306/images/3.png'
+    'url': 'https://www.kfxl.link:12306/images/3.png'
   },
   {
     'step': '动作四',
@@ -42,7 +42,7 @@ var exercise = [
     'muscle': '头长肌、颈长肌',
     'time': '时长：5秒 休息：10秒',
     'set':  '次数：4',
-    'url': 'http://47.114.156.165:12306/images/4.png'
+    'url': 'https://www.kfxl.link:12306/images/4.png'
   },
   {
     'step': '动作五',
@@ -53,7 +53,7 @@ var exercise = [
     'muscle': '斜方肌、头夹肌、颈夹肌、头半棘肌、头最长肌、颈最长肌',
     'time': '时长：5秒 休息：10秒',
     'set':  '次数：4',
-    'url': 'http://47.114.156.165:12306/images/5.png'
+    'url': 'https://www.kfxl.link:12306/images/5.png'
   },
   {
     'step': '动作一',
@@ -64,7 +64,7 @@ var exercise = [
     'muscle': '斜角肌',
     'time': '时长：15-30秒 休息：10秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/6.png'
+    'url': 'https://www.kfxl.link:12306/images/6.png'
   },
   {
     'step': '动作二',
@@ -75,7 +75,7 @@ var exercise = [
     'muscle': '多裂肌、竖脊肌、斜方肌',
     'time': '时长：15秒 休息：10秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/7.png'
+    'url': 'https://www.kfxl.link:12306/images/7.png'
   },
   {
     'step': '动作三',
@@ -86,7 +86,7 @@ var exercise = [
     'muscle': '肩胛提肌、斜方肌、头夹肌、颈夹肌',
     'time': '时长：5秒 休息：12秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/8.png'
+    'url': 'https://www.kfxl.link:12306/images/8.png'
   },
   {
     'step': '动作四',
@@ -97,7 +97,7 @@ var exercise = [
     'muscle': '头长肌、颈长肌',
     'time': '时长：15秒 休息：20秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/1.png'
+    'url': 'https://www.kfxl.link:12306/images/1.png'
   },
   {
     'step': '动作五',
@@ -108,7 +108,7 @@ var exercise = [
     'muscle': '头夹肌、颈夹肌、头下斜肌、头后大直肌',
     'time': '时长：30秒 休息：5秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/2.png'
+    'url': 'https://www.kfxl.link:12306/images/2.png'
   },
   {
     'step': '动作一',
@@ -119,7 +119,7 @@ var exercise = [
     'muscle': '头夹肌、颈夹肌、头下斜肌、头后大直肌',
     'time': '时长：30秒 休息：5秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/2.png'
+    'url': 'https://www.kfxl.link:12306/images/2.png'
   },
   {
     'step': '动作二',
@@ -130,7 +130,7 @@ var exercise = [
     'muscle': '菱形肌、斜方肌',
     'time': '时长：30秒 休息：10秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/3.png'
+    'url': 'https://www.kfxl.link:12306/images/3.png'
   },
   {
     'step': '动作三',
@@ -141,7 +141,7 @@ var exercise = [
     'muscle': '前斜角肌、胸锁乳突肌、颈长肌、头长肌',
     'time': '时长：15秒 休息：10秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/4.png'
+    'url': 'https://www.kfxl.link:12306/images/4.png'
   },
   {
     'step': '动作四',
@@ -152,7 +152,7 @@ var exercise = [
     'muscle': '头夹肌、颈夹肌、胸锁乳突肌、斜角肌',
     'time': '时长：15秒 休息：5秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/5.png'
+    'url': 'https://www.kfxl.link:12306/images/5.png'
   },
   {
     'step': '动作五',
@@ -163,7 +163,7 @@ var exercise = [
     'muscle': '前斜角肌、胸锁乳突肌、颈长肌、头长肌',
     'time': '时长：20秒 休息：10秒',
     'set':  '次数：3',
-    'url': 'http://47.114.156.165:12306/images/6.png'
+    'url': 'https://www.kfxl.link:12306/images/6.png'
   },
 ]
 

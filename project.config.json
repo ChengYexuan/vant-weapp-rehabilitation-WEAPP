@@ -44,8 +44,8 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wx18ed1ca25953d92b",
-  "projectname": "vant",
+  "appid": "wx52da084815fc6341",
+  "projectname": "vant-main",
   "debugOptions": {
     "hidedInDevtools": []
   },

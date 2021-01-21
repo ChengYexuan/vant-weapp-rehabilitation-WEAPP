@@ -1,26 +1,31 @@
 // pages/new/new.js
 //import Toast from 'path/to/@vant/weapp/dist/toast/toast';
+const app = getApp()
+
 
 Page({
   data: {
-    age: null,
+    
     sex: ['a', 'b'],
+    age: null,
     sex:false,
-    
-    illness:['i1','i2','i3','i4','i5','i6','i7'],
-    illness:false,
-    illtime:['time1','time2','time3'],
-    illtime:false,
-    exercise:['ex1','ex2','ex3'],
-    exercise:false,
+
+    site:['0','1','2','3','4','5','6'],
+    site:false,
+    stage:['0','1','2'],
+    stage:false,
+    intensity:['0','1','2'],
+    intensity:false,
     value: '',
-    
+    checkedsite:null,
+    checkedstage:null,
+    checkedintensity:null,
   },
   
-  onChange_num(event) {
-    // event.detail 为当前输入的值
-    console.log(event.detail);
-  },
+  // onChange_num(event) {
+  //   // event.detail 为当前输入的值
+  //   console.log(event.detail);
+  // },
 
   onChange(event) {
     this.setData({
@@ -30,49 +35,69 @@ Page({
 
   onChange_ill(event) {
     this.setData({
-      illness: event.detail,
+      site: event.detail,
+      checkedsite :event.detail,
     });
+    // console.log(this.data.checkedsite)
   },
 
   onChange_time(event) {
     this.setData({
-      illtime: event.detail,
+      stage: event.detail,
+      checkedstage:event.detail,
     });
+    // console.log(this.data.checkedstage)
   },
 
   onChange_ex(event) {
     this.setData({
-      exercise: event.detail,
+      intensity: event.detail,
+      checkedintensity:event.detail,
+    });
+    // console.log(this.data.checkedintensity)
+  },
+  // changesite0(event){
+  //   const checkedsite = 0
+  //   console.log(checkedsite)
+  // },
+
+  // 事件处理函数
+  onConfirm:function() {
+    console.log(this.checkedsite)
+    wx.request( {
+      url:  "http://47.114.156.165:12306/plan/new",
+      method:"POST",
+      // header: {
+      //   "Content-Type": "application/x-www-form-urlencoded"
+      // },
+      data:{
+        userID: app.globalData.id,
+        intensity:parseInt(this.data.checkedintensity),
+        site: parseInt(this.data.checkedsite),
+        stage: parseInt(this.data.checkedstage),
+      },
+      success: function (res) {
+        console.log(res.data);
+        wx.switchTab({
+          url: '../train/train',
+        })
+        wx.showToast({
+          title: '创建成功！',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+    })
+    
+  },
+
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail,
     });
   },
 
 
-  // 事件处理函数
-  onConfirm:function() {
-    // wx.request({
-    //   url : app.globalData.ipstar + "/plan/new",
-    //   method: "POST",
-    //   header: {
-    //     "content-type": "application/x-www-form-urlencoded" 
-    //   },
-    //   data: {
-    //     result : JSON.stringify(this.data.result)
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data);
-    //     wx.switchTab({
-    //       url: '../train/train',
-    //     })
-    //     wx.showToast({
-    //       title: '创建成功！',
-    //       icon: 'success',
-    //       duration: 2000
-    //     })
-    //   },
-
-    // }),
-    
-  },
 
   onInput(event) {
     this.setData({

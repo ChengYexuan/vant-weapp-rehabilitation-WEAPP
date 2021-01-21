@@ -30,10 +30,10 @@
 
 <view wx:else>
   <view class="box">
-    <image src="https://cdn.cloudflare.steamstatic.com/steam/apps/1071050/capsule_616x353.jpg?t=1556079845" mode="aspectFit"></image>
+    <text>\n</text>
     <view class="h1">我的方案里空空如也~~</view>
     <text>\n</text>
-    <image src="https://images-prod.healthline.com/hlcmsresource/images/topic_centers/7693-neck-tension-causes-symptoms-treatmentsseated-neck-stretch-1296x400-body.jpg" mode="widthFix"></image>
+    <!-- <image src="https://images-prod.healthline.com/hlcmsresource/images/topic_centers/7693-neck-tension-causes-symptoms-treatmentsseated-neck-stretch-1296x400-body.jpg" mode="heightFix"></image> -->
   </view>
   <navigator url="../new/new" open-type="switchTab">
     <van-button style="padding-bottom: 120rpx" type="primary" size="large" color="#6ED2FF">新建我的第一个方案！</van-button>

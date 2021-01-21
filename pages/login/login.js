@@ -8,7 +8,8 @@ Page({
     isHide: false,
     hasUserInfo:false,
     userInfo:{},
-    imgBgURL:app.globalData.ipstr+"images/loginBGG_1.jpg",
+    wxLogoURL:app.globalData.ipstr+"/images/wxLogo.png",
+    imgBgURL:app.globalData.ipstr+"/images/loginBG_1.jpg",
   },
 
   /**
@@ -35,11 +36,11 @@ Page({
               wx.login({
                 success: res => {
                   //获取openid
-                  wx.request({
-                    url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx18ed1ca25953d92b&secret=1906dab1d235f2fe97fad7fe7f67de47&js_code=' + res.code + '&grant_type=authorization_code',
-                    success:res=>{
-                    }
-                  })
+                  // wx.request({
+                  //   url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx18ed1ca25953d92b&secret=1906dab1d235f2fe97fad7fe7f67de47&js_code=' + res.code + '&grant_type=authorization_code',
+                  //   success:res=>{
+                  //   }
+                  // })
                 }
               });
             }

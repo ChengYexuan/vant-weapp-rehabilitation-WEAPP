@@ -26,7 +26,7 @@ Page({
   onLoad: function (options) {
     let params = JSON.parse(options.obj)
     this.setData({
-      videoURL: 'http://47.114.156.165:12306/videos/P' + app.globalData.serialNo + '/' + app.globalData.serialNo+ '-' + params.order  + '.mp4',
+      videoURL: app.globalData.ipstr + '/videos/P' + app.globalData.planID + '/' + app.globalData.planID+ '-' + params.order  + '.mp4',
       flag: params.flag,
       title: params.title
     })
@@ -47,26 +47,28 @@ Page({
   },
 
   /**
-   * 页面卸载时--上传record到后端
+   * 页面卸载时--上传record到后端，bug：详情页面的视频播放时间会干扰
    */
   onUnload: function () {
-    wx.request({
-      url: app.globalData.ipstr + '/plan/process',
-      method: "GET",
-      data: {
-        serialNo: app.globalData.serialNo,
-        actionNum: this.data.index,
-        actionSec: this.data.record
-      },
-      success: res => {
-        console.log(res)
-      }
-    })
-    app.globalData.progressTime = this.data.record
+    // if(this.data.flag){
+    //   wx.request({
+    //     url: app.globalData.ipstr + '/plan/process',
+    //     method: "GET",
+    //     data: {
+    //       serialNo: app.globalData.serialNo,
+    //       actionNum: this.data.index,
+    //       actionSec: this.data.record
+    //     },
+    //     success: res => {
+    //       console.log(res)
+    //     }
+    //   })
+    //   app.globalData.progressTime = this.data.record
+    // }
   },
 
   /**
-   * 播放进度发生变化时--更新record、结束时弹出对话框
+   * 播放进度发生变化时--实时更新record、结束时弹出对话框
    */
   currentTime: function(e) {
     const total = e.detail.duration
@@ -78,7 +80,6 @@ Page({
       this.setData({
         show: true
       })
-      console.log(this.data.index)
       if (this.data.index === 4) {
         this.setData({
           text: '恭喜你完成训练！'
@@ -92,11 +93,12 @@ Page({
     }
   },
 
-    /**
+  /**
    * 事件处理函数--确认按钮触发record上传
    */
   onClose() {
     this.setData({ show: false })
+    console.log(app.globalData.serialNo)
     wx.request({
       url: app.globalData.ipstr + '/plan/process',
       method: "GET",
@@ -110,7 +112,7 @@ Page({
       }
     })
     app.globalData.progressTime = 0
-    app.globalData.index = app.globalData.index+1
+    app.globalData.index = app.globalData.index + 1
     if (this.data.index === 4) {
       wx.switchTab({
         url: '../train/train',

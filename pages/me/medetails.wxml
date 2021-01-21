@@ -18,43 +18,13 @@
       <view class="h3">
         <van-cell-group>
           <van-field
-            value="{{ age }}"
             required
             clearable
-            label="年龄"
-            placeholder="请输入年龄"
-          />
-
-          <van-field
-            value="{{ sex }}"
-            required
-            clearable
-            label="性别"
-            placeholder="请输入性别"
-          />
-          
-          <van-field
-            value="{{ height }}"
-            required
-            clearable
-            label="身高"
-            placeholder="请输入身高"
-          />
-
-          <van-field
-            value="{{ weight }}"
-            required
-            clearable
-            label="体重"
-            placeholder="请输入体重"
-          />
-          
-          <van-field
-            value="{{ phone }}"
-            required
-            clearable
-            label="手机号"
-            placeholder="请输入手机号"
+            wx:for="{{detailList}}" 
+            wx:key="index"
+            label="{{item.text}}"
+            placeholder="{{item.current}}"
+            bind:change="onChange"
           />
         </van-cell-group>
       </view>

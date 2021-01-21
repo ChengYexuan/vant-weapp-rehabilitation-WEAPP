@@ -100,6 +100,40 @@ Page({
     });
   },
 
+
+  // 事件处理函数
+  onConfirm:function() {
+    // wx.request({
+    //   url : app.globalData.ipstar + "/plan/new",
+    //   method: "POST",
+    //   header: {
+    //     "content-type": "application/x-www-form-urlencoded" 
+    //   },
+    //   data: {
+    //     result : JSON.stringify(this.data.result)
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     wx.switchTab({
+    //       url: '../train/train',
+    //     })
+    //     wx.showToast({
+    //       title: '创建成功！',
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //   },
+
+    // }),
+    
+  },
+
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

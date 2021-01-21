@@ -10,6 +10,11 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    currentAge: '暂无',
+    currentSexIndex: 0,
+    currentHeight: '暂无',
+    currentWeight: '暂无',
+    currentPhoneNum: '暂无',
   },
   
   /**
@@ -72,6 +77,41 @@ Page({
         selected: 4
       })
     }
+
+  // 拉取后端数据
+    // wx.request( {
+    //   url: app.globalData.ipstr + "/user/info",
+    //   data:{
+    //     userID: app.globalData.id
+    //   },
+    //   success: res => {
+    //     console.log(res),
+    //     this.setData({
+    //       currentAge: res.data.data.age,
+    //       currentSexIndex: res.data.data.sex,
+    //       currentHeight: res.data.data.height,
+    //       currentWeight: res.data.data.weight,
+    //       currentPhoneNum: res.data.data.phoneNum
+    //     })
+    //   }
+    // })
+
+    var currentAge = 1 //api
+    var currentSexIndex = 1 //api
+    var currentHeight = 1 //api
+    var currentWeight = 1 //api
+    var currentPhoneNum = 1 //api
+    const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
+    var currentSex = sexDict[this.data.currentSexIndex].sex
+
+    this.setData({
+      currentAge: currentAge,
+      currentSex: currentSex,
+      currentHeight: currentHeight,
+      currentWeight: currentWeight,
+      currentPhoneNum: currentPhoneNum
+    }
+    )
   },
 
   /**
@@ -91,6 +131,20 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+  toMeDetails: function () {
+    // wx.navigateTo({
+    //   url: '../me/medetails'
+    // })
+    wx.navigateTo({
+      url: '../me/medetails?obj=' + JSON.stringify({
+        currentAge: this.data.currentAge,
+        currentSex: this.data.currentSex,
+        currentHeight: this.data.currentHeight,
+        currentWeight: this.data.currentWeight,
+        currentPhoneNum: this.data.currentPhoneNum}),
+    })
+  },
+
   onPullDownRefresh: function () {
 
   },

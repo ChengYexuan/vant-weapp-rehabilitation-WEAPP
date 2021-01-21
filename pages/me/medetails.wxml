@@ -17,14 +17,56 @@
     <van-col span="20"  offset="2">
       <view class="h3">
         <van-cell-group>
+          <van-cell title="选择生日" is-link bind:click="showPopup" />
+          <van-popup
+            show="{{ show }}"
+            position="bottom"
+            custom-style="height: 50%;"
+            bind:close="onClose"
+          >
+            <van-datetime-picker
+              type="date"
+              show-toolbar="false"
+              cancel-button-text=""
+              confirm-button-text="确定"
+              value="{{ currentDate }}"
+              bind:confirm="onChangeDateOfBirth"
+              min-date="{{ minDate }}"
+              max-date="{{ maxDate }}"
+              formatter="{{ formatter }}"
+            />
+          </van-popup>
           <van-field
             required
             clearable
-            wx:for="{{detailList}}" 
-            wx:key="index"
-            label="{{item.text}}"
-            placeholder="{{item.current}}"
-            bind:change="onChange"
+            value="{{sex}}"
+            label="性别"
+            placeholder="{{currentSex}}"
+            bind:change="onChangeSex"
+          />
+          <van-field
+            required
+            clearable
+            value="{{height}}"
+            label="身高"
+            placeholder="{{currentHeight}}"
+            bind:change="onChangeHeight"
+          />
+          <van-field
+            required
+            clearable
+            value="{{weight}}"
+            label="体重"
+            placeholder="{{currentWeight}}"
+            bind:change="onChangeWeight"
+          />
+          <van-field
+            required
+            clearable
+            value="{{phoneNum}}"
+            label="手机号"
+            placeholder="{{currentPhoneNum}}"
+            bind:change="onChangePhoneNum"
           />
         </van-cell-group>
       </view>

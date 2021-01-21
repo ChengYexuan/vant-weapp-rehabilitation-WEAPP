@@ -6,12 +6,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detailList: [
-      {'title': 'age', 'text': '年龄', 'current':'暂无', 'new':'暂无'}, 
-      {'title': 'sex', 'text': '性别', 'current':'暂无', 'new':'暂无'}, 
-      {'title': 'height', 'text': '身高（cm）', 'current':'暂无', 'new':'暂无'}, 
-      {'title': 'weight', 'text': '体重（kg）', 'current':'暂无', 'new':'暂无'}, 
-      {'title': 'phoneNum', 'text': '手机号', 'current':'暂无', 'new':'暂无'}]
+    dateOfBirth: '',
+    sex: '',
+    height: '',
+    weight: '',
+    phoneNum: '',
+    currentDateOfBirth: '暂无',
+    currentSexIndex: 0,
+    currentHeight: '暂无',
+    currentWeight: '暂无',
+    currentPhoneNum: '暂无',
+
+    show: false,
+    currentDate: new Date().getTime(),
+    minDate: new Date(1900, 0, 1),
+    maxDate: new Date().getTime(),
+    formatter(type, value) {
+      if (type === 'year') {
+        return `${value}年`;
+      } else if (type === 'month') {
+        return `${value}月`;
+      }
+      return value;
+    }
   },
 
   /**
@@ -23,34 +40,34 @@ Page({
 
     if (JSON.parse(options.obj).currentAge != null) {
       this.setData({
-        ['detailList[0].current']: JSON.parse(options.obj).currentAge,
-        ['detailList[0].new']: JSON.parse(options.obj).currentAge
+        currentAge: JSON.parse(options.obj).currentAge,
+        newAge: JSON.parse(options.obj).currentAge
       })
     }
     if (JSON.parse(options.obj).currentSexIndex != null) {
       this.setData({
         currentSexIndex: JSON.parse(options.obj).currentSexIndex,
-        ['detailList[1].current']: sexDict[JSON.parse(options.obj).currentSexIndex].sex,
+        currentSex: sexDict[JSON.parse(options.obj).currentSexIndex].sex,
         newSexIndex: JSON.parse(options.obj).currentSexIndex,
-        ['detailList[1].new']: sexDict[JSON.parse(options.obj).currentSexIndex].sex
+        newSex: sexDict[JSON.parse(options.obj).currentSexIndex].sex
       })
     }
     if (JSON.parse(options.obj).currentHeight != null) {
       this.setData({
-        ['detailList[2].current']: JSON.parse(options.obj).currentHeight,
-        ['detailList[2].new']: JSON.parse(options.obj).currentHeight
+        currentHeight: JSON.parse(options.obj).currentHeight,
+        newHeight: JSON.parse(options.obj).currentHeight
       })
     }
     if (JSON.parse(options.obj).currentWeight != null) {
       this.setData({
-        ['detailList[3].current']: JSON.parse(options.obj).currentWeight,
-        ['detailList[3].new']: JSON.parse(options.obj).currentWeight
+        currentWeight: JSON.parse(options.obj).currentWeight,
+        newWeight: JSON.parse(options.obj).currentWeight
       })
     }
     if (JSON.parse(options.obj).currentPhoneNum != null) {
       this.setData({
-        ['detailList[4].current']: JSON.parse(options.obj).currentPhoneNum,
-        ['detailList[4].new']: JSON.parse(options.obj).currentPhoneNum
+        currentPhoneNum: JSON.parse(options.obj).currentPhoneNum,
+        newPhoneNum: JSON.parse(options.obj).currentPhoneNum
       })
     }
   },
@@ -104,19 +121,76 @@ Page({
 
   },
   
-  onClick() {
+  showPopup() {
+    this.setData({ show: true });
+  },
 
+  onClose() {
+    this.setData({ show: false });
+  },
+  
+  onChangeDateOfBirth(event) {
+    var time = new Date(event.detail)
+    var year = time.getFullYear();  // 获取完整的年份(4位,1970)
+    var month = time.getMonth() + 1;  // 获取月份(0-11,0代表1月)
+    var day = time.getDate();  // 获取日(1-31)
+    var seperator = "/";
+    this.setData({
+      newDateOfBirth: year + seperator + month + seperator + day
+    })
+    this.setData({ show: false })
+    console.log(this.data.newDateOfBirth);
+  },
+
+  onChangeSex(event) {
+    console.log(event.detail);
+    this.setData({
+      newSex: event.detail
+    })
+    if (event.detail == "男") {
+      this.data.newSexIndex = 1
+    } else if (event.detail == "女") {
+      this.data.newSexIndex = 2
+    } else {
+      this.data.newSexIndex = 0
+      }
+    console.log(this.data.newSexIndex);
+  },
+
+  onChangeHeight(event) {
+    this.setData({
+      newHeight: event.detail
+    })
+    console.log(this.data.newHeight);
+  },
+
+  onChangeWeight(event) {
+    this.setData({
+      newWeight: event.detail
+    })
+    console.log(this.data.newWeight);
+  },
+
+  onChangePhoneNum(event) {
+    console.log(event.detail);
+    this.setData({
+      newPhoneNum: event.detail
+    })
+    console.log(this.data.newPhoneNum);
+  },
+
+  onClick() {
     wx.request({
       url: app.globalData.ipstr + '/user/info',
-      method: "PUT",
+      method: "POST",
       data: {
         userID: app.globalData.id,
-        // userID: "Coccccccyx",
-        age: this.data.detailList[0].new,
+        // userID: "wdyabcd",
+        dateOfBirth: this.data.newDateOfBirth,
         sex: this.data.newSexIndex,
-        height: this.data.detailList[2].new,
-        weight: this.data.detailList[3].new,
-        phoneNum: this.data.detailList[4].new
+        height: this.data.newHeight,
+        weight: this.data.newWeight,
+        phoneNum: this.data.newPhoneNum
       },
       success: res => {
         console.log(res)
@@ -124,22 +198,5 @@ Page({
     })
 
     wx.navigateBack({ changed: true })
-
-  },
-
-  // onChange(event) {
-  //   console.log(event.detail);
-  //   let index = event.currentTarget.dataset.index;
-  //   if (index == 1) {
-  //     if (event.detail == "男") {
-  //       this.data.newSexIndex = 1
-  //     } else if (event.detail == "女") {
-  //       this.data.newSexIndex = 2
-  //     } else {
-  //       this.data.newSexIndex = 0
-  //     }
-  //   } else {
-  //     ['this.data.detailList[index].new'] = event.detail
-  //   }
-  // }
+  }  
 })

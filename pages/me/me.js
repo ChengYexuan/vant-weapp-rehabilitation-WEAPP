@@ -82,54 +82,24 @@ Page({
     wx.request( {
       url: app.globalData.ipstr + "/user/info",
       data:{
-        // userID: app.globalData.id
-        userID: "wdyabcd"
+        userID: app.globalData.id
+        // userID: "wdyabcd"
       },
       success: res => {
         console.log(res.data),
         this.setData({
-          age: res.data.data.age,
-          sexIndex: res.data.data.sex,
-          height: res.data.data.height,
-          weight: res.data.data.weight,
-          phoneNum: res.data.data.phoneNum
+          currentAge: res.data.data.age,
+          currentSexIndex: res.data.data.sex,
+          currentHeight: res.data.data.height,
+          currentWeight: res.data.data.weight,
+          currentPhoneNum: res.data.data.phoneNum
         })
       }
     })
-
-    // var currentAge = 1 //api
-    // var currentSexIndex = 1 //api
-    // var currentHeight = 1 //api
-    // var currentWeight = 1 //api
-    // var currentPhoneNum = 1 //api
     const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
-    var currentSex = sexDict[this.data.sexIndex].sex
-
-    if (this.data.age != null) {
-      this.setData({
-        currentAge: this.data.age
-      })
-    }
-    if (this.data.height != null) {
-      this.setData({
-        currentHeight: this.data.height
-      })
-    }
-    if (this.data.weight != null) {
-      this.setData({
-        currentWeight: this.data.weight
-      })
-    }
-    if (this.data.phoneNum != null) {
-      this.setData({
-        currentPhoneNum: this.data.phoneNum
-      })
-    }
-
     this.setData({
-      currentSex: currentSex
-    }
-    )
+      currentSex: sexDict[this.data.currentSexIndex].sex
+    })
   },
 
   /**

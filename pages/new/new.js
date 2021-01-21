@@ -65,7 +65,7 @@ Page({
   onConfirm:function() {
     console.log(this.checkedsite)
     wx.request( {
-      url:  "http://47.114.156.165:12306/plan/new",
+      url:  app.globalData.ipstr + "/plan/new",
       method:"POST",
       // header: {
       //   "Content-Type": "application/x-www-form-urlencoded"

@@ -1,6 +1,6 @@
 // pages/history/historydetails.js
 const docu = require('../../static/docu.js')
-const document = docu.plan
+const document = docu.planDoc
 const app = getApp()
 
 Page({
@@ -49,30 +49,26 @@ Page({
         }),
         console.log(res.data),
         console.log(this.data.planID)
-      }
-    })
-
-    // var planIndex = 1 //api
-    if (this.data.planID == null) {
-      var planName = "无"
-    }
-    else{
-      var planName = document[this.data.planID].title
-      const exerDoc = docu.compose(planName)[0]
-      var list = []
-      for(let i=0; i<exerDoc.length; i++){
-        list.push({
-          step: exerDoc[i].step,
-          title: exerDoc[i].title,
+        if (this.data.planID == null) {
+          var planName = "无"
+        }
+        else{
+          var planName = document[this.data.planID].title
+          const exerDoc = docu.composeExer(planName)[0]
+          var list = []
+          for(let i=0; i<exerDoc.length; i++){
+            list.push({
+              step: exerDoc[i].step,
+              title: exerDoc[i].title,
+            })
+          }
+        }
+        this.setData({
+          planName: planName,
+          list: list
         })
       }
-    }
-
-    this.setData({
-      planName: planName,
-      list: list
     })
-    
   },
 
   /**
@@ -96,8 +92,12 @@ Page({
     let index = e.currentTarget.dataset.index;
     console.log(this.data.list)
     wx.navigateTo({
-      url: '../train/start?exer=' + this.data.list[index].title,
-    })
+      url: '../train/start?obj=' + JSON.stringify({
+        exerName: this.data.list[index].title,
+        flag: false,
+        index: index
+      })
+    })
   },
 
   /**

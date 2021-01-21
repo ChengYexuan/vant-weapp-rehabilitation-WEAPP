@@ -103,11 +103,15 @@ Page({
     // var currentWeight = 1 //api
     // var currentPhoneNum = 1 //api
     const sexDict = [{'sex': '未知'}, {'sex': '男'}, {'sex': '女'}]
-    var currentSex = sexDict[this.data.sexIndex].sex
 
     if (this.data.age != null) {
       this.setData({
         currentAge: this.data.age
+      })
+    }
+    if (this.data.sexIndex != null) {
+      this.setData({
+        currentSexIndex: this.data.sexIndex
       })
     }
     if (this.data.height != null) {
@@ -127,9 +131,8 @@ Page({
     }
 
     this.setData({
-      currentSex: currentSex
-    }
-    )
+      currentSex: sexDict[this.data.currentSexIndex].sex
+    })
   },
 
   /**
